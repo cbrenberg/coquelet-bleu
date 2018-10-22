@@ -3,6 +3,24 @@ body {
     margin: 0px;
 }
 
+#react-root {
+    height: 100vh;
+}
+
+.site-content {
+    height: 71vh;
+    margin: 0;
+    padding: 2vh;
+    background-image: url('../../images/coffee-background.jpg');
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.site-content h1 {
+    margin-top: 0;
+}
+
 .alert {
     background-color: #ff4545;
     margin: 50px;
