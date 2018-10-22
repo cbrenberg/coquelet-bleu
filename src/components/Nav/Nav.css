@@ -1,0 +1,18 @@
+.nav {
+  width: 100vw;
+  height: 5vh;
+  background-color: gainsboro;
+}
+
+.nav-item {
+  display: inline-block;
+  padding: 0 2vw;
+  height: 5vh;
+  line-height: 5vh;
+  text-decoration: none;
+  color: #2189c1;
+}
+
+.nav-item.active {
+  color: black;
+}

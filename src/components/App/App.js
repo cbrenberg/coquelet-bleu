@@ -16,6 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import HomePage from '../HomePage/HomePage';
 import InfoPage from '../InfoPage/InfoPage';
+import Nav from '../Nav/Nav';
 
 import './App.css';
 
@@ -29,6 +30,7 @@ class App extends Component {
       <Router>
         <div>
           <Header />
+          <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />

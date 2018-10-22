@@ -6,7 +6,7 @@ import './Header.css';
 import RoosterLogoBW from '../../images/rooster-logo-bw.png'
 
 const Header = (props) => (
-  <div className="nav">
+  <div className="header">
     <Link to="/home">
       <img src={RoosterLogoBW} alt="rooster logo" className="nav-logo" />
       <h2 className="nav-title">Coquelet Bleu Coffee</h2>
