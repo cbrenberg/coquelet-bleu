@@ -1,0 +1,30 @@
+#homePage {
+  width: 80%;
+  height: 80%;
+  margin: 2% auto;
+  padding: 2%;
+  background-color: white;
+  opacity: 0.9;
+}
+
+.container {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.imageDiv {
+  width: 40%;
+  align-self: center;
+}
+
+#logo {
+  width: 80%;
+}
+
+.textDiv {
+  width: 60%;
+  padding: 20px;
+  border-left: 2px solid gainsboro;
+}
