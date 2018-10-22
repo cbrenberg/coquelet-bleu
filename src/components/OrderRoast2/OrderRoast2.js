@@ -5,10 +5,10 @@ import React from 'react';
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
 
-const OrderOrigin = () => (
-  <div id="orderOrigin">
-    <h1>Order Form Page 1: Select bean origin</h1>
+const OrderRoast = () => (
+  <div id="orderRoast">
+    <h1>Order Form Page 2: Select roast</h1>
   </div>
 );
 
-export default OrderOrigin;
+export default OrderRoast;
