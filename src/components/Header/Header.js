@@ -2,12 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
+import './Header.css';
+import RoosterLogoBW from '../../images/rooster-logo-bw.png'
 
-const Nav = (props) => (
+const Header = (props) => (
   <div className="nav">
     <Link to="/home">
-      <h2 className="nav-title">Prime Solo Project</h2>
+      <img src={RoosterLogoBW} alt="rooster logo" className="nav-logo" />
+      <h2 className="nav-title">Coquelet Bleu Coffee</h2>
     </Link>
     <div className="nav-right">
       <Link className="nav-link" to="/home">
@@ -26,6 +28,7 @@ const Nav = (props) => (
         </>
       )}
       {/* Always show this link since the about page is not protected */}
+      {/* MOVE ABOUT LINK TO MAIN NAVBAR LATER */}
       <Link className="nav-link" to="/about">
         About
       </Link>
@@ -42,4 +45,4 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps)(Header);
