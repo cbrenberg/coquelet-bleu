@@ -54,7 +54,13 @@ router.put('/', (req, res) => {
 })
 
 router.delete('/', (req, res) => {
-  console.log('/feedback DELETE hit. req.query:', req.query);
+  console.log('/api/orders DELETE hit. req.query:', req.query);
+  pool.query(`DELETE FROM "orders" WHERE "id"=$1;`, [req.query.id])
+    .then(() => res.sendStatus(200))
+    .catch(error => {
+      console.log('Error deleting order', error);
+      res.sendStatus(500);
+    })
 })
 
 module.exports = router;
