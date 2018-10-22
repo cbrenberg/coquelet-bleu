@@ -1,0 +1,13 @@
+progress {
+  height: 1vh;
+  width: 76vw;
+  background-color: white;
+}
+
+progress::-webkit-progress-bar {
+  background-color: gainsboro;
+}
+progress::-webkit-progress-value {
+  background-color: #2189c1;
+  transition: width 1s;
+}

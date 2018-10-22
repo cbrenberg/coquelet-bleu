@@ -1,5 +1,6 @@
 import React from 'react';
 import './OrderPage.css';
+import OrderProgressBar from '../OrderProgressBar/OrderProgressBar';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -8,9 +9,10 @@ import './OrderPage.css';
 
 const OrderPage = () => (
   <div id="orderPage">
-    <p>
+    <OrderProgressBar />
+    <h1>
       Order Page
-    </p>
+    </h1>
   </div>
 );
 
