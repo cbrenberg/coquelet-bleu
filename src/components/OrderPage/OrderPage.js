@@ -10,6 +10,9 @@ import OrderProgressBar from '../OrderProgressBar/OrderProgressBar';
 import OrderFormNav from '../OrderFormNav/OrderFormNav';
 import OrderOrigin1 from '../OrderOrigin1/OrderOrigin1';
 import OrderRoast2 from '../OrderRoast2/OrderRoast2';
+import OrderQuantity3 from '../OrderQuantity3/OrderQuantity3';
+import OrderReview4 from '../OrderReview4/OrderReview4';
+import OrderPayment5 from '../OrderPayment5/OrderPayment5';
 import OrderSummary from '../OrderSummary/OrderSummary';
 
 // This is one of our simplest components
@@ -24,25 +27,48 @@ const OrderPage = () => (
       <OrderProgressBar />
       <h1>
         Order Page
-    </h1>
-      <OrderFormNav />
-      <Switch>
-        <div className="orderFormNav">
-          {/* Visiting localhost:3000/about will show the about page.
-            This is a route anyone can see, no login necessary */}
-          <Route
-            exact
-            path="/order"
-            component={OrderOrigin1}
-          />
-          <Route
-            exact
-            path="/order/2"
-            component={OrderRoast2}
-          />
+      </h1>
+      <div className="orderFormFlexContainer">
+        <div className="orderFormFlexChild">
+          <OrderFormNav />
         </div>
-      </Switch>
-      <OrderSummary />
+        <div className="orderFormFlexChild">
+
+          <Switch>
+            <div className="orderFormNav">
+              {/* Visiting localhost:3000/about will show the about page.
+            This is a route anyone can see, no login necessary */}
+              <Route
+                exact
+                path="/order"
+                component={OrderOrigin1}
+              />
+              <Route
+                exact
+                path="/order/2"
+                component={OrderRoast2}
+              />
+              <Route
+                exact
+                path="/order/3"
+                component={OrderQuantity3}
+              />
+              <Route
+                exact
+                path="/order/4"
+                component={OrderReview4}
+              />
+              <Route
+                exact
+                path="/order/5"
+                component={OrderPayment5}
+              />
+            </div>
+          </Switch>
+          <OrderSummary />
+        </div>
+
+      </div>
     </div>
   </Router>
 

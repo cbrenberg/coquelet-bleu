@@ -7,7 +7,7 @@ import React from 'react';
 
 const OrderRoast = () => (
   <div id="orderRoast">
-    <h1>Order Form Page 2: Select roast</h1>
+    <h3>Order Form Page 2: Select roast</h3>
   </div>
 );
 
