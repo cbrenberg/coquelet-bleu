@@ -6,12 +6,13 @@ import ORDER_ACTIONS from '../actions/orderActions';
 function* chooseBean(action) {
   try {
     // gets bean information from server
-    const inventory = yield axios.get(`api/inventory/${action.payload.id}`);
+    const inventory = yield axios.get(`api/inventory/${action.payload}`);
+    yield console.log(inventory.data[0].name);
     // clear any existing error on the registration page
-    yield put({ type: ORDER_ACTIONS.SET_BEAN, payload: inventory.data });
+    yield put({ type: ORDER_ACTIONS.SET_BEAN, payload: inventory.data[0] });
 
     // automatically log a user in after registration
-    yield put({ type: ORDER_ACTIONS.DISPLAY_BEAN_INFO, payload: inventory.data});
+    yield put({ type: ORDER_ACTIONS.DISPLAY_BEAN_INFO, payload: inventory.data[0]});
 
   } catch (error) {
     console.log('Error with user registration:', error);

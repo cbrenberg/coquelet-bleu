@@ -25,14 +25,15 @@ router.put('/', (req, res) => {
 })
 
 //GET all in stock inventory for admin table display
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
   console.log('/api/inventory GET hit');
   pool.query(`SELECT outerBean."id", outerBean."flavor_description", outerBean."image_url", outerBean."name", outerBean."origin_description", outerBean."quantity", 
                 (SELECT array_agg("roast_levels"."roast") as "roasts" FROM "roast_levels"
                   JOIN "roast_junction" ON "roast_junction"."roast_id"="roast_levels"."id"
                   JOIN "beans" ON "roast_junction"."bean_id" = "beans"."id"
                   WHERE "roast_junction"."bean_id" = outerBean."id")
-              FROM "beans" outerBean;`)
+              FROM "beans" outerBean
+              WHERE outerBean."id"=$1;`,[req.params.id])
     .then(results => {
       console.log(results.rows);
       res.send(results.rows);
