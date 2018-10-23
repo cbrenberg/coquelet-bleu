@@ -25,9 +25,6 @@ const OrderPage = () => (
     <div id="orderPage">
 
       <OrderProgressBar />
-      <h1>
-        Order Page
-      </h1>
       <div className="orderFormFlexContainer">
         <div className="orderFormFlexChild">
           <OrderFormNav />

@@ -8,6 +8,8 @@ import {
 
 import { connect } from 'react-redux';
 
+import ORDER_ACTIONS from '../../redux/actions/orderActions';
+
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
@@ -23,6 +25,7 @@ import './App.css';
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' })
+    this.props.dispatch({ type: ORDER_ACTIONS.FETCH_INVENTORY })
   }
 
   render() {

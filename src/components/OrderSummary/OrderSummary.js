@@ -9,45 +9,38 @@ class OrderSummary extends Component {
   state = {}
 
   componentDidMount() {
-    this.props.dispatch({ type: ORDER_ACTIONS.CHOOSE_BEAN, payload: 1 });
+    
     this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 20 });
-
   }
 
   render() {
     //takes just the selected bean property from redux store
-    const selectedBean = this.props.userOrder.orderToDisplay.bean;
-    if (selectedBean) {
+    const currentOrder = this.props.inventory.orderToDisplay;
+    if (currentOrder.bean) {
       return (
         <div className="container">
           {/* <div className="imageDiv"> */}
           <Image
-            src={selectedBean}
+            src={currentOrder.bean}
           />
-          {/* TODO: get image to render properly even before componentDidMount returns props */}
-          {/* <img id="logo" src={this.props.userOrder.orderToDisplay.bean.image_url} /> */}
-          {/* </div> */}
           <div className="textDiv">
-            <p>Display up to date order information here.</p>
             <ul>
-              <li><strong>Selected Bean: </strong>{selectedBean.name}</li>
-              <li><strong>Description: </strong>{selectedBean.origin_description}</li>
-              <li><strong>Flavor Notes: </strong>{selectedBean.flavor_description}</li>
-              <li><strong>Suggested Roasts: </strong>{selectedBean.roasts.join(', ')}</li>
+              <li><strong>Selected Bean: </strong>{currentOrder.bean.name}</li>
+              <li><strong>Description: </strong>{currentOrder.bean.origin_description}</li>
+              <li><strong>Flavor Notes: </strong>{currentOrder.bean.flavor_description}</li>
+              <li><strong>Suggested Roasts: </strong>{currentOrder.bean.roasts.join(', ')}</li>
             </ul>
-            
-            <pre>{JSON.stringify(selectedBean.id, null, 2)}</pre>
           </div>
         </div>
       )
     } else {
       return (
-        <p>Still Loading...</p>
+        <p>Choose Your Bean</p>
       )
     }
   }
 };
 
-const mapStateToProps = ({ userOrder }) => ({ userOrder })
+const mapStateToProps = ({ inventory }) => ({ inventory })
 
 export default connect(mapStateToProps)(OrderSummary);
