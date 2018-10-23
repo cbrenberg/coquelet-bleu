@@ -9,11 +9,11 @@ class HomePage extends Component {
   render() {
     return (
       //TODO: set value based on redux store 'progress'
-        <progress value='50' max='100' />
+        <progress value={this.props.userOrder.orderProgress.progress} max='100' />
     )
   }
 }
 
-const mapStateToProps = ({state}) => ({state})
+const mapStateToProps = ({userOrder}) => ({userOrder})
 
 export default connect(mapStateToProps)(HomePage);

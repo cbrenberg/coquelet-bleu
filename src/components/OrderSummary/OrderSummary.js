@@ -1,31 +1,14 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 import RoosterLogo from '../../images/rooster-logo-blue.png';
+import ORDER_ACTIONS from '../../redux/actions/orderActions';
 
-
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
 
 class OrderSummary extends Component {
-  state = { orders: ['']
-    // {[
-    //   Object
-    // ]}
-  }
-
-  getOrderInfo = () => {
-    axios.get('/api/orders')
-      .then(response => {
-        this.setState({ orders: response.data})
-      })
-      .catch(error => console.log('error getting orders', error))
-  }
-
-
+  
   componentDidMount() {
-    this.getOrderInfo();
+    this.props.dispatch({ type: ORDER_ACTIONS.CHOOSE_BEAN })
+    this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 20 });
   }
 
   render() {
@@ -37,11 +20,13 @@ class OrderSummary extends Component {
         <div className="textDiv">
           <p>Display up to date order information here.</p>
           
-          <pre>{JSON.stringify(this.state.orders, null, 2)}</pre>
+          <pre>{JSON.stringify(this.props.userOrder.orderToDisplay, null, 2)}</pre>
         </div>
       </div>
     )
   }
 };
 
-export default OrderSummary;
+const mapStateToProps = ({ userOrder }) => ({ userOrder })
+
+export default connect(mapStateToProps)(OrderSummary);
