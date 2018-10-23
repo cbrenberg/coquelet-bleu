@@ -12,7 +12,7 @@ const Header = (props) => (
       <h2 className="nav-title">Coquelet Bleu Coffee</h2>
     </Link>
     <div className="nav-right">
-      <Link className="nav-link" to="/home">
+      <Link className="nav-link" to="/login">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
@@ -21,7 +21,7 @@ const Header = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
-          <Link className="nav-link" to="/info">
+          <Link className="nav-link" to="/login">
             Info Page
           </Link>
           <LogOutButton className="nav-link"/>
@@ -29,9 +29,9 @@ const Header = (props) => (
       )}
       {/* Always show this link since the about page is not protected */}
       {/* MOVE ABOUT LINK TO MAIN NAVBAR LATER */}
-      <Link className="nav-link" to="/about">
+      {/* <Link className="nav-link" to="/about">
         About
-      </Link>
+      </Link> */}
     </div>
   </div>
 );

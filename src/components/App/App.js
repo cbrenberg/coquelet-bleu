@@ -15,7 +15,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import OrderPage from '../OrderPage/OrderPage';
 import HomePage from '../HomePage/HomePage';
-import InfoPage from '../InfoPage/InfoPage';
+import LoginPage from '../LoginPage/LoginPage';
 import Nav from '../Nav/Nav';
 
 import './App.css';
@@ -28,7 +28,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <>
           <Header />
           <Nav />
           <div className="site-content">
@@ -54,15 +54,15 @@ class App extends Component {
             they will see the info page instead. */}
               <ProtectedRoute
                 exact
-                path="/info"
-                component={InfoPage}
+                path="/login"
+                component={LoginPage}
               />
               {/* If none of the other routes matched, we will show a 404. */}
               <Route render={() => <h1>404</h1>} />
             </Switch>
           </div>
           <Footer />
-        </div>
+        </>
       </Router>
     )
   }

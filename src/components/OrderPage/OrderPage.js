@@ -33,11 +33,9 @@ const OrderPage = () => (
           <OrderFormNav />
         </div>
         <div className="orderFormFlexChild">
+          <div className="orderFormNav">
+            <Switch>
 
-          <Switch>
-            <div className="orderFormNav">
-              {/* Visiting localhost:3000/about will show the about page.
-            This is a route anyone can see, no login necessary */}
               <Route
                 exact
                 path="/order"
@@ -63,8 +61,9 @@ const OrderPage = () => (
                 path="/order/5"
                 component={OrderPayment5}
               />
-            </div>
-          </Switch>
+
+            </Switch>
+          </div>
           <OrderSummary />
         </div>
 
