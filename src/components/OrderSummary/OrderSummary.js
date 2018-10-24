@@ -61,6 +61,7 @@ class OrderSummary extends Component {
               <li><strong>Selected Roast: </strong>{currentOrder.roast.roast}</li>
               <li><strong>Roast Description: </strong>{currentOrder.roast.description}</li>
               <li><strong>Quantity: </strong>{currentOrder.quantity} oz.</li>
+              <li><strong>Total Cost: </strong>${currentOrder.quantity * 1.25}.00</li>
             </ul>
           </div>
         </div>

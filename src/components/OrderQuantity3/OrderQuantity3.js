@@ -11,7 +11,7 @@ class OrderQuantity extends Component {
 
   calculateAvailableQuantities = (ouncesInInventory) => {
     let quantities = [];
-    for (let i = 4; i < ouncesInInventory && i < 16; i += 4) {
+    for (let i = 4; i < ouncesInInventory && i <= 16; i += 4) {
       quantities.push(i);
     }
     this.setState({ quantities: quantities });
@@ -35,7 +35,7 @@ class OrderQuantity extends Component {
     return (
       <div id="OrderQuantity">
         <h3>Order Form Page 3: Select Quantity</h3>
-        <p>You may select a quantity up to 1 lbs.(16oz) in 4oz increments.</p>
+        <p>You may select a quantity up to 1 lb. (16 oz.) in 4 oz. increments.</p>
         <select value={this.state.selection ? this.state.selection : ''} onChange={this.handleSelect}>
           <option value='' disabled>---How Many Beans?---</option>
           {this.state.quantities.map(item => {

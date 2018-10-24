@@ -13,6 +13,7 @@ class OrderReview extends Component {
     return (
       <div id="OrderReview">
         <h3>Order Form Page 4: Review Order</h3>
+        <p>Take a moment to look over your order. When you're ready, proceed to checkout!</p>
       </div>
     )
   }
