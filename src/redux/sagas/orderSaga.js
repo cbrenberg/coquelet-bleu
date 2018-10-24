@@ -15,7 +15,7 @@ function* chooseBean(action) {
     yield put({ type: ORDER_ACTIONS.DISPLAY_BEAN_INFO, payload: bean.data[0]});
 
   } catch (error) {
-    console.log('Error with user registration:', error);
+    console.log('Bean selection error:', error);
   }
 }
 
@@ -31,7 +31,7 @@ function* chooseRoast(action) {
     yield put({ type: ORDER_ACTIONS.SET_ROAST, payload: roast.data[0].id })
 
   } catch (error) {
-    console.log('Error with user registration:', error);
+    console.log('Roast selection error:', error);
   }
 }
 
