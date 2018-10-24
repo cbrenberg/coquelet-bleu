@@ -6,9 +6,7 @@ import Image from '../Image/Image';
 
 class OrderSummary extends Component {
   
-  componentWillMount() {
-    this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 20 });
-  }
+  
 
   render() {
     //takes just the selected bean property from redux store

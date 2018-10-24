@@ -6,6 +6,10 @@ import ORDER_ACTIONS from '../../redux/actions/orderActions';
 class OrderRoast extends Component {
   state = {};
 
+  componentDidMount() {
+    this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 2 });
+  }
+
   handleSelect = (event) => {
     this.setState({selection: event.target.value})
     this.props.dispatch({ type: ORDER_ACTIONS.CHOOSE_ROAST, payload: event.target.value });

@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import ORDER_ACTIONS from '../../redux/actions/orderActions';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
 
-const OrderReview = () => (
-  <div id="OrderReview">
-    <h3>Order Form Page 4: Review Order</h3>
-  </div>
-);
+class OrderReview extends Component {
 
-export default OrderReview;
+  componentDidMount() {
+    this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 4 });
+  }
+
+  render() {
+    return (
+      <div id="OrderReview">
+        <h3>Order Form Page 4: Review Order</h3>
+      </div>
+    )
+  }
+}
+
+export default connect()(OrderReview);
