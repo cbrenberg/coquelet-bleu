@@ -6,7 +6,7 @@ import ORDER_ACTIONS from '../actions/orderActions';
 const inventory = (state = {}, action) => {
   switch (action.type) {
     case ORDER_ACTIONS.SET_BEAN:
-      return {...state, bean: action.payload};
+      return action.payload[0];
     case ORDER_ACTIONS.SET_ROAST:
       return {...state, roast: action.payload};
     case ORDER_ACTIONS.SET_QUANTITY:
@@ -18,14 +18,14 @@ const inventory = (state = {}, action) => {
   }
 };
 
-const beanList = (state = [], action) => {
-  switch (action.type) {
-    case ORDER_ACTIONS.SET_INVENTORY:
-      return action.payload.data
-    default:
-      return state;
-  }
-}
+// const beanList = (state = [], action) => {
+//   switch (action.type) {
+//     case ORDER_ACTIONS.SET_INVENTORY:
+//       return action.payload.data
+//     default:
+//       return state;
+//   }
+// }
 
 // registrationMessage holds the string that will display
 // on the registration screen if there's an error
@@ -42,14 +42,14 @@ const orderToDisplay = (state = {}, action) => {
   }
 };
 
-const orderProgress = (state={progress: 0}, action) => {
-  switch (action.type) {
-    case ORDER_ACTIONS.UPDATE_PROGRESS:
-      return {progress: action.payload}
-    default:
-      return state;
-  }
-}
+// const orderProgress = (state={progress: 0}, action) => {
+//   switch (action.type) {
+//     case ORDER_ACTIONS.UPDATE_PROGRESS:
+//       return {progress: action.payload}
+//     default:
+//       return state;
+//   }
+// }
 
 // make one object that has keys loginMessage, registrationMessage
 // these will be on the redux state at:
@@ -57,6 +57,4 @@ const orderProgress = (state={progress: 0}, action) => {
 export default combineReducers({
   inventory,
   orderToDisplay,
-  orderProgress,
-  beanList,
 });

@@ -19,7 +19,7 @@ function* chooseBean(action) {
   }
 }
 
-function* getInventory(action) {
+function* getInventory() {
   try {
     const inventory = yield call(axios.get, 'api/inventory');
     yield put({ type: ORDER_ACTIONS.SET_INVENTORY, payload: inventory })
@@ -29,9 +29,20 @@ function* getInventory(action) {
   }
 }
 
+function* getRoasts() {
+  try {
+    const roastList = yield call(axios.get, 'api/roasts');
+    yield put({ type: ORDER_ACTIONS.STORE_ROASTS, payload: roastList })
+  } catch (error) {
+    console.log('Error getting inventory', error);
+
+  }
+}
+
 function* orderSaga() {
   yield takeLatest(ORDER_ACTIONS.CHOOSE_BEAN, chooseBean);
   yield takeLatest(ORDER_ACTIONS.FETCH_INVENTORY, getInventory);
+  yield takeLatest(ORDER_ACTIONS.FETCH_ROASTS, getRoasts);
 }
 
 export default orderSaga;

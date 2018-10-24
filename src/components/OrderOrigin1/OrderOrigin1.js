@@ -20,7 +20,7 @@ class OrderOrigin extends Component {
         <h3>Order Form Page 1: Select bean origin</h3>
         <select value={this.state.selectedBeanId} onChange={this.handleSelect}>
         <option value=''>---Select a Bean---</option>
-          {this.props.inventory.beanList.map(item => {
+          {this.props.inventory.beansInStock.map(item => {
             return <option key={item.id} value={item.id}>{item.name}</option>
           })}
         </select>

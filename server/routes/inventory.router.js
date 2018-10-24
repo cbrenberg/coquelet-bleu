@@ -2,6 +2,8 @@ const express = require('express');
 const pool = require('../modules/pool')
 const router = express.Router();
 
+//TODO: Change all bean routes to /api/inventory/beans
+
 router.post('/', (req, res) => {
   console.log('req.body:', req.body);
   pool.query(`INSERT INTO "beans" ("name", "origin_description", "flavor_description", "image_url", "quantity")
@@ -63,18 +65,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-//GET all roast levels to populate dropdown for customer
-router.get('/roasts', (req, res) => {
-  console.log('/api/inventory/roasts GET hit');
-  pool.query(`SELECT * FROM "roast_levels"`)
-    .then( results => {
-      res.send(results.rows);
-    })
-    .catch(error => {
-      console.log('Error getting roast levels', error);
-      res.sendStatus(500);
-    })
-})
+
 
 router.delete('/', (req, res) => {
   console.log('/api/inventory DELETE hit. req.query:', req.query);

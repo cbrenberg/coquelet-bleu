@@ -18,7 +18,7 @@ class Image extends Component {
 
     if (this.state.loaded) {
       return (
-        <img src={this.props.src.image_url}
+        <img src={this.props.src}
           height='200'
           width='200'/>
         )

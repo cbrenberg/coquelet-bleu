@@ -6,41 +6,39 @@ import Image from '../Image/Image';
 
 
 class OrderSummary extends Component {
-  state = {}
-
+  
   componentDidMount() {
-    
     this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 20 });
   }
 
   render() {
     //takes just the selected bean property from redux store
-    const currentOrder = this.props.inventory.orderToDisplay;
-    if (currentOrder.bean) {
+    const currentOrder = this.props.newOrder.inventory;
+    if (currentOrder.roasts) {
       return (
         <div className="container">
-          {/* <div className="imageDiv"> */}
           <Image
-            src={currentOrder.bean}
+            src={currentOrder.image_url}
           />
           <div className="textDiv">
             <ul>
-              <li><strong>Selected Bean: </strong>{currentOrder.bean.name}</li>
-              <li><strong>Description: </strong>{currentOrder.bean.origin_description}</li>
-              <li><strong>Flavor Notes: </strong>{currentOrder.bean.flavor_description}</li>
-              <li><strong>Suggested Roasts: </strong>{currentOrder.bean.roasts.join(', ')}</li>
+              <li><strong>Selected Bean: </strong>{currentOrder.name}</li>
+              <li><strong>Description: </strong>{currentOrder.origin_description}</li>
+              <li><strong>Flavor Notes: </strong>{currentOrder.flavor_description}</li>
+              <li><strong>Suggested Roasts: </strong>{currentOrder.roasts.join(', ')}</li>
             </ul>
           </div>
+          
         </div>
       )
     } else {
       return (
-        <p>Choose Your Bean</p>
+        <pre>{JSON.stringify(this.props, null, 2)}</pre>
       )
     }
   }
 };
 
-const mapStateToProps = ({ inventory }) => ({ inventory })
+const mapStateToProps = ({ newOrder }) => ({ newOrder })
 
 export default connect(mapStateToProps)(OrderSummary);
