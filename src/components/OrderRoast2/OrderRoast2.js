@@ -21,13 +21,13 @@ class OrderRoast extends Component {
       <div id="orderRoast">
 
         <h3>Order Form Page 2: Select Roast</h3>
-        <select value={this.state.selectedRoast ? this.state.selectedRoast : ''} onChange={this.handleSelect}>
+        <select value={this.state.selection ? this.state.selection : ''} onChange={this.handleSelect}>
           <option value='' disabled>---Select a Roast---</option>
           {this.props.roastLevels.map(item => {
             return <option key={item.id} value={item.id}>{item.roast}</option>
           })}
         </select>
-        <pre>{JSON.stringify(this.state, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
       </div>
     )
   }

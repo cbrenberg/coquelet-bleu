@@ -4,13 +4,14 @@ import ORDER_ACTIONS from '../../redux/actions/orderActions';
 
 
 class OrderOrigin extends Component {
+  state = {};
 
   componentDidMount() {
     this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 1 });
   }
 
   handleSelect = (event) => {
-    this.props.dispatch({ type: ORDER_ACTIONS.SET_BEAN, payload: event.target.value })
+    this.setState({ selection: event.target.value })
     this.props.dispatch({ type: ORDER_ACTIONS.CHOOSE_BEAN, payload: event.target.value });
   }
 
@@ -20,8 +21,8 @@ class OrderOrigin extends Component {
       <div id="orderOrigin">
 
         <h3>Order Form Page 1: Select bean origin</h3>
-        <select onChange={this.handleSelect}>
-          <option value=''>---Select a Bean---</option>
+        <select value={this.state.selection ? this.state.selection : ''} onChange={this.handleSelect}>
+          <option value='' disabled>---Select a Bean---</option>
           {this.props.beansInStock.map(item => {
             return <option key={item.id} value={item.id}>{item.name}</option>
           })}
