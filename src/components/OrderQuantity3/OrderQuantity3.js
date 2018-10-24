@@ -29,6 +29,7 @@ class OrderQuantity extends Component {
     this.setState({ selection: event.target.value })
     this.props.dispatch({ type: ORDER_ACTIONS.SET_QUANTITY, payload: Number(event.target.value) });
     this.props.dispatch({ type: ORDER_ACTIONS.DISPLAY_QUANTITY, payload: Number(event.target.value) });
+    this.props.dispatch({ type: ORDER_ACTIONS.SET_COST, payload: (event.target.value * 1.25)})
   }
  
   render() {

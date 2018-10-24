@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
 import ORDER_ACTIONS from '../actions/orderActions';
 
-// loginMessage holds the string that will display
-// on the login screen if there's an error
 
-//Should look like this:
+//toSubmit object in redux
+// Should look like this:
 // newOrder.toSubmit = {
 //   "first_name": "Christopher",
 //   "last_name": "Brenberg",
@@ -28,15 +27,16 @@ const toSubmit = (state = {}, action) => {
       return { ...state, quantity: action.payload };
     case ORDER_ACTIONS.SET_CUSTOMER_INFO:
       return { ...state, };
+    case ORDER_ACTIONS.SET_COST:
+      return { ...state, cost: action.payload }
     default:
       return state;
   }
 };
 
 
-// registrationMessage holds the string that will display
-// on the registration screen if there's an error
-//SHOULD LOOK LIKE THIS:
+// toDisplay reducer object
+// SHOULD LOOK LIKE THIS IN REDUX STORE:
 // newOrder.orderToDisplay = {
 //   "name": "Costa Rica Peaberry",
 //   origin_description: "From the Monteverde region of Costa Rica, this shade-grown coffee is of the highest quality",
@@ -62,23 +62,16 @@ const toDisplay = (state = {}, action) => {
       return { ...state, roast: action.payload };
     case ORDER_ACTIONS.DISPLAY_QUANTITY:
       return { ...state, quantity: action.payload };
+    case ORDER_ACTIONS.SET_COST:
+      return { ...state, cost: action.payload }
     default:
       return state;
   }
 };
 
-// const orderProgress = (state={progress: 0}, action) => {
-//   switch (action.type) {
-//     case ORDER_ACTIONS.UPDATE_PROGRESS:
-//       return {progress: action.payload}
-//     default:
-//       return state;
-//   }
-// }
-
-// make one object that has keys loginMessage, registrationMessage
+// make one object that has keys toSubmit, toDisplay
 // these will be on the redux state at:
-// state.errors.loginMessage and state.errors.registrationMessage
+// state.newOrder.toSubmit and state.newOrder.toDisplay
 export default combineReducers({
   toSubmit,
   toDisplay,

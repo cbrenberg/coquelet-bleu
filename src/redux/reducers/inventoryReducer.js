@@ -19,9 +19,9 @@ const beansInStock = (state = [], action) => {
   }
 }
 
-// make one object that has keys loginMessage, registrationMessage
+// make one object that has keys roastLevels, beansInStock
 // these will be on the redux state at:
-// state.errors.loginMessage and state.errors.registrationMessage
+// state.inventory.roastLevels and state.inventory.beansInStock
 export default combineReducers({
   roastLevels,
   beansInStock,
