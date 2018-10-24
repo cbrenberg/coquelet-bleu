@@ -19,6 +19,22 @@ function* chooseBean(action) {
   }
 }
 
+// worker Saga: will be fired on "REGISTER" actions
+function* chooseRoast(action) {
+  try {
+    // gets bean information from server
+    const roast = yield call(axios.get, `api/roasts/${action.payload}`);
+
+    // set data for displaying on DOM
+    yield put({ type: ORDER_ACTIONS.DISPLAY_ROAST_INFO, payload: roast.data[0] });
+
+    yield put({ type: ORDER_ACTIONS.SET_ROAST, payload: roast.data[0].id })
+
+  } catch (error) {
+    console.log('Error with user registration:', error);
+  }
+}
+
 function* getInventory() {
   try {
     const inventory = yield call(axios.get, 'api/inventory');
@@ -41,6 +57,7 @@ function* getRoasts() {
 
 function* orderSaga() {
   yield takeLatest(ORDER_ACTIONS.CHOOSE_BEAN, chooseBean);
+  yield takeLatest(ORDER_ACTIONS.CHOOSE_ROAST, chooseRoast);
   yield takeLatest(ORDER_ACTIONS.FETCH_INVENTORY, getInventory);
   yield takeLatest(ORDER_ACTIONS.FETCH_ROASTS, getRoasts);
 }

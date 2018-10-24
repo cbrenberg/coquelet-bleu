@@ -17,4 +17,16 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/:id', (req, res) => {
+  console.log('/api/roasts GET hit');
+  pool.query(`SELECT * FROM "roast_levels" WHERE "id"=$1;`, [req.params.id])
+    .then(results => {
+      res.send(results.rows);
+    })
+    .catch(error => {
+      console.log('Error getting roast levels', error);
+      res.sendStatus(500);
+    })
+})
+
 module.exports = router;

@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import ORDER_ACTIONS from '../../redux/actions/orderActions';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
 
-const OrderRoast = () => (
-  <div id="orderRoast">
-    <h3>Order Form Page 2: Select roast</h3>
-  </div>
-);
+class OrderRoast extends Component {
+  state = {};
 
-export default OrderRoast;
+  handleSelect = (event) => {
+    this.setState({selection: event.target.value})
+    this.props.dispatch({ type: ORDER_ACTIONS.CHOOSE_ROAST, payload: event.target.value });
+  }
+
+  render() {
+
+    return (
+      <div id="orderRoast">
+
+        <h3>Order Form Page 2: Select Roast</h3>
+        <select value={this.state.selectedRoast ? this.state.selectedRoast : ''} onChange={this.handleSelect}>
+          <option value='' disabled>---Select a Roast---</option>
+          {this.props.roastLevels.map(item => {
+            return <option key={item.id} value={item.id}>{item.roast}</option>
+          })}
+        </select>
+        <pre>{JSON.stringify(this.state, null, 2)}</pre>
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = ({ inventory }) => ({ roastLevels: inventory.roastLevels })
+
+export default connect(mapStateToProps)(OrderRoast);

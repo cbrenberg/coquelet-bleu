@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import RoosterLogo from '../../images/rooster-logo-blue.png';
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
 import Image from '../Image/Image';
 
 
 class OrderSummary extends Component {
   
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 20 });
   }
 
   render() {
     //takes just the selected bean property from redux store
-    const currentOrder = this.props.newOrder.inventory;
-    if (currentOrder.roasts) {
+    const currentOrder = this.props.toDisplay;
+    if (this.props.toDisplay.bean) {
       return (
         <div className="container">
           <Image
-            src={currentOrder.image_url}
+            src={currentOrder.bean.image_url}
           />
           <div className="textDiv">
-            <ul>
-              <li><strong>Selected Bean: </strong>{currentOrder.name}</li>
-              <li><strong>Description: </strong>{currentOrder.origin_description}</li>
-              <li><strong>Flavor Notes: </strong>{currentOrder.flavor_description}</li>
-              <li><strong>Suggested Roasts: </strong>{currentOrder.roasts.join(', ')}</li>
+            <ul id="orderSummaryList">
+              <li><strong>Selected Bean: </strong>{currentOrder.bean.name}</li>
+              <li><strong>Description: </strong>{currentOrder.bean.origin_description}</li>
+              <li><strong>Flavor Notes: </strong>{currentOrder.bean.flavor_description}</li>
+              <li><strong>Suggested Roasts: </strong>{currentOrder.bean.roasts.join(', ')}</li>
             </ul>
           </div>
           
@@ -39,6 +38,6 @@ class OrderSummary extends Component {
   }
 };
 
-const mapStateToProps = ({ newOrder }) => ({ newOrder })
+const mapStateToProps = ({ newOrder }) => ({ toDisplay: newOrder.toDisplay })
 
 export default connect(mapStateToProps)(OrderSummary);
