@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ORDER_ACTIONS from '../../redux/actions/orderActions';
 import Image from '../Image/Image';
 
 
@@ -9,6 +8,7 @@ class OrderSummary extends Component {
   render() {
     //takes just the selected bean property from redux store
     const currentOrder = this.props.toDisplay;
+    //TODO: reorganize redux store to build an array for 'toDisplay' that can be mapped as <ul>
     if (!this.props.toDisplay.bean && !this.props.toDisplay.roast && !this.props.toDisplay.quantity) {
       return (
         // <pre>{JSON.stringify(this.props, null, 2)}</pre>

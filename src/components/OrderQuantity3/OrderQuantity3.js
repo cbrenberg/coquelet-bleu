@@ -18,7 +18,9 @@ class OrderQuantity extends Component {
   }
 
   componentWillReceiveProps() {
-    this.calculateAvailableQuantities(this.props.beanInfo.quantity);
+    if (this.props.beanInfo) {
+      this.calculateAvailableQuantities(this.props.beanInfo.quantity);
+    }
   }
 
   componentDidMount() {
@@ -29,9 +31,9 @@ class OrderQuantity extends Component {
     this.setState({ selection: event.target.value })
     this.props.dispatch({ type: ORDER_ACTIONS.SET_QUANTITY, payload: Number(event.target.value) });
     this.props.dispatch({ type: ORDER_ACTIONS.DISPLAY_QUANTITY, payload: Number(event.target.value) });
-    this.props.dispatch({ type: ORDER_ACTIONS.SET_COST, payload: (event.target.value * 1.25)})
+    this.props.dispatch({ type: ORDER_ACTIONS.SET_COST, payload: (event.target.value * 1.25) })
   }
- 
+
   render() {
     return (
       <div id="OrderQuantity">
@@ -50,6 +52,6 @@ class OrderQuantity extends Component {
   }
 }
 
-const mapStateToProps = ({ newOrder }) => ({ beanInfo: newOrder.toDisplay.bean});
+const mapStateToProps = ({ newOrder }) => ({ beanInfo: newOrder.toDisplay.bean });
 
 export default connect(mapStateToProps)(OrderQuantity);

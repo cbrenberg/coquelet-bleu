@@ -8,7 +8,6 @@ class HomePage extends Component {
     return (
       <>
       {/* <pre>{JSON.stringify(this.props, null, 2)}</pre> */}
-      {/* //TODO: set value based on redux store 'progress' */}
         <progress value={this.props.value} max='5' />
         </>
     )

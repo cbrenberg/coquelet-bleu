@@ -11,3 +11,9 @@
   display: flex;
   flex-direction: row;
 }
+
+.orderFormButtonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

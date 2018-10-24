@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   HashRouter as Router,
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 import './OrderPage.css';
 
@@ -15,60 +17,72 @@ import OrderReview4 from '../OrderReview4/OrderReview4';
 import OrderPayment5 from '../OrderPayment5/OrderPayment5';
 import OrderSummary from '../OrderSummary/OrderSummary';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
 
-const OrderPage = () => (
-  <Router>
-    <div id="orderPage">
 
-      <OrderProgressBar />
-      <div className="orderFormFlexContainer">
-        <div className="orderFormFlexChild">
-          <OrderFormNav />
-        </div>
-        <div className="orderFormFlexChild">
-          <div className="orderFormNav">
-            <Switch>
+class OrderPage extends Component {
 
-              <Route
-                exact
-                path="/order"
-                component={OrderOrigin1}
-              />
-              <Route
-                exact
-                path="/order/2"
-                component={OrderRoast2}
-              />
-              <Route
-                exact
-                path="/order/3"
-                component={OrderQuantity3}
-              />
-              <Route
-                exact
-                path="/order/4"
-                component={OrderReview4}
-              />
-              <Route
-                exact
-                path="/order/5"
-                component={OrderPayment5}
-              />
+  handleClick = (event) => {
+    console.log(Number.isInteger(Number(this.props.location.pathname.substr(-1))))
+    // if (Number.isInteger(Number(this.props.location.pathname.substr(-1)))) {
+    // let nextPath = Number(this.props.location.pathname.substr(-1)) + Number(event.target.value);
+    // this.props.history.push(`/order/${Number(nextPath)}`);
+    // } else {
+    //   this.props.history.push('/order/1');
+    // }
+  }
 
-            </Switch>
+  render() {
+    return (
+      <Router>
+        <div id="orderPage">
+          <OrderProgressBar />
+          <div className="orderFormFlexContainer">
+            <div className="orderFormFlexChild">
+              <OrderFormNav />
+            </div>
+            <div className="orderFormFlexChild">
+              {/* <div className="orderFormNav"> */}
+              <Switch>
+                <Route
+                  exact
+                  path="/order"
+                  component={OrderOrigin1}
+                />
+                <Route
+                  exact
+                  path="/order/2"
+                  component={OrderRoast2}
+                />
+                <Route
+                  exact
+                  path="/order/3"
+                  component={OrderQuantity3}
+                />
+                <Route
+                  exact
+                  path="/order/4"
+                  component={OrderReview4}
+                />
+                <Route
+                  exact
+                  path="/order/5"
+                  component={OrderPayment5}
+                />
+              </Switch>
+              {/* </div> */}
+              <OrderSummary />
+            </div>
+            <div className="orderFormFlexChild orderFormButtonContainer">
+              <button id="previous" value='-1' onClick={this.handleClick}>Previous</button>
+              <button id="next" value='1' onClick={this.handleClick}>Next</button>
+            </div>
           </div>
-          <OrderSummary />
         </div>
+      </Router >
+    )
+  }
+}
 
-      </div>
-    </div>
-  </Router>
+// const mapStateToProps = state => ({ state });
 
-
-);
-
-export default OrderPage;
+export default connect()(OrderPage);
