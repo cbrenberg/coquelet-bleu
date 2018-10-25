@@ -14,13 +14,15 @@ class OrderFormNav extends Component {
     return (
       <div className="verticalNav">
         <NavLink to='/order'>Select An Origin</NavLink>
-        <NavLink to='/order/2'>Select Your Roast</NavLink>
-        <NavLink to='/order/3'>Choose Quantity</NavLink>
-        <NavLink to='/order/4'>Review Your Order</NavLink>
-        <NavLink to='/order/5'>Submit and Pay</NavLink>
+        <NavLink className={!this.props.newOrder.toSubmit.bean ? 'disabledLink' : null} to='/order/2'>Select Your Roast</NavLink>
+        <NavLink className={!this.props.newOrder.toSubmit.roast ? 'disabledLink' : null} to='/order/3'>Choose Quantity</NavLink> 
+        <NavLink className={!this.props.newOrder.toSubmit.quantity ? 'disabledLink' : null} to='/order/4'>Review Your Order</NavLink>
+        <NavLink className={!this.props.newOrder.toSubmit.quantity ? 'disabledLink' : null} to='/order/5'>Submit and Pay</NavLink>
       </div>
     )
   }
 }
 
-export default connect()(OrderFormNav);
+const mapStateToProps = ({ newOrder }) => ({ newOrder })
+
+export default connect(mapStateToProps)(OrderFormNav);

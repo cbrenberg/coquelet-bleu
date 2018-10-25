@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import {
   HashRouter as Router,
   Route,
   Switch,
   withRouter
 } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './OrderPage.css';
 
 import OrderProgressBar from '../OrderProgressBar/OrderProgressBar';
@@ -65,14 +65,16 @@ class OrderPage extends Component {
             </div>
             <div className="orderFormFlexChild orderFormButtonContainer">
               <FormNavButton 
+                id="previous"
                 path={this.props.history.location.pathname === '/order/2' ? null : this.props.history.location.pathname.substr(-1) - 1} 
                 text="Previous" 
-                disabled={this.props.history.location.pathname === '/order'} 
+                hidden={this.props.history.location.pathname === '/order'}
               />
               <FormNavButton 
+                id="next"
                 path={this.props.history.location.pathname === '/order' ? 2 : Number(this.props.history.location.pathname.substr(-1)) + 1} 
                 text="Next" 
-                disabled={this.props.history.location.pathname === '/order/5'} 
+                hidden={this.props.history.location.pathname === '/order/5'} 
               />
             </div>
           </div>
@@ -82,4 +84,8 @@ class OrderPage extends Component {
   }
 }
 
-export default withRouter(OrderPage);
+const OrderPageWithRouter = withRouter(OrderPage);
+
+const mapStateToProps = ({newOrder}) => ({newOrder});
+
+export default connect(mapStateToProps)(OrderPageWithRouter);

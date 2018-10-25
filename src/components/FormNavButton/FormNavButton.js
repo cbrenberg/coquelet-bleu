@@ -12,7 +12,7 @@ const FormNavButton = (props) => {
     return (
         <Link 
           to={props.path === null ? '/order' : `/order/${props.path}`} 
-          className={props.disabled ? 'disabled' : null}
+          className={(props.hidden ? 'hidden' : null)}
         >
           {props.text}
           {JSON.stringify(props.location, null, 2)}
