@@ -16,14 +16,19 @@ class OrderPayment extends Component {
     return (
       <div id="orderRoast">
         <h3>Order Form Page 5: Submit and Pay</h3>
+        <p>Your order of {this.props.newOrder.toDisplay.quantity} oz. of {this.props.newOrder.toDisplay.roast.roast} roast {this.props.newOrder.toDisplay.bean.name} comes to ${this.props.newOrder.toDisplay.cost}.00.</p>
+        <p>Please enter your payment information below.</p>
         <StripeProvider apiKey="pk_test_YOOTh9CE0vOGJLNC9WBPpXmr">
           <Elements>
             <CheckoutForm />
           </Elements>
         </StripeProvider>
+        {/* <pre>{JSON.stringify(this.props, null, 2)}</pre> */}
       </div>
     )
   }
 }
 
-export default connect()(OrderPayment);
+const mapStateToProps = ({ newOrder }) => ({ newOrder })
+
+export default connect(mapStateToProps)(OrderPayment);

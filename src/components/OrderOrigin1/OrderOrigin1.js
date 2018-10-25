@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
+import OrderSummary from '../OrderSummary/OrderSummary';
 
 
 class OrderOrigin extends Component {
@@ -27,6 +28,7 @@ class OrderOrigin extends Component {
             return <option key={item.id} value={item.id}>{item.name}</option>
           })}
         </select>
+        <OrderSummary />
         {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
       </div>
     )

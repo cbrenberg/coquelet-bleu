@@ -38,9 +38,11 @@ class ContactInfoForm extends Component {
         <label>Last Name
           <input name="last_name" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.last_name} />
         </label>
+        <br />
         <label>Street Address
           <input name="street_address" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.street_address} />
         </label>
+        <br />
         <label>City
           <input name="city" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.city} />
         </label>
@@ -50,13 +52,15 @@ class ContactInfoForm extends Component {
         <label>Zipcode
           <input name="zipcode" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.zipcode} />
         </label>
+        <br />
         <label>Phone
           <input name="phone" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.phone} />
         </label>
         <label>Email
           <input name="email" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.email} />
         </label>
-        <pre>{JSON.stringify(this.state, null, 2)}</pre>
+        <br />
+        {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
       </>
     )
   }

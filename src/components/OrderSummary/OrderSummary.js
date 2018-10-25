@@ -47,7 +47,7 @@ class OrderSummary extends Component {
           </div>
         </div>
       )
-    } else {
+    } else if (this.props.toDisplay.quantity) {
       return (
         <div className="container">
           <Image
@@ -66,7 +66,7 @@ class OrderSummary extends Component {
           </div>
         </div>
       )
-    }
+    } 
   }
 };
 

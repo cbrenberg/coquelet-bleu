@@ -61,7 +61,6 @@ class OrderPage extends Component {
                 />
               </Switch>
               {/* </div> */}
-              <OrderSummary />
             </div>
             <div className="orderFormFlexChild orderFormButtonContainer">
               <FormNavButton 
