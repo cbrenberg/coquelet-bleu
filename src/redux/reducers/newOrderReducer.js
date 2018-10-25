@@ -29,6 +29,8 @@ const toSubmit = (state = {}, action) => {
       return { ...state, ...action.payload};
     case ORDER_ACTIONS.SET_COST:
       return { ...state, cost: action.payload }
+    case ORDER_ACTIONS.RESET_ORDER:
+      return {};
     default:
       return state;
   }
@@ -64,6 +66,8 @@ const toDisplay = (state = {}, action) => {
       return { ...state, quantity: action.payload };
     case ORDER_ACTIONS.SET_COST:
       return { ...state, cost: action.payload }
+    case ORDER_ACTIONS.RESET_ORDER:
+      return {};
     default:
       return state;
   }
