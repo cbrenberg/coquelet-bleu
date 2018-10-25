@@ -25,8 +25,8 @@ const toSubmit = (state = {}, action) => {
       return { ...state, roast: action.payload };
     case ORDER_ACTIONS.SET_QUANTITY:
       return { ...state, quantity: action.payload };
-    case ORDER_ACTIONS.SET_CUSTOMER_INFO:
-      return { ...state, };
+    case ORDER_ACTIONS.UPDATE_CONTACT_INFO:
+      return { ...state, ...action.payload};
     case ORDER_ACTIONS.SET_COST:
       return { ...state, cost: action.payload }
     default:
