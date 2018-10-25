@@ -4,7 +4,7 @@ import {
   HashRouter as Router,
   Route,
   Switch,
-  Redirect
+  withRouter
 } from 'react-router-dom';
 import './OrderPage.css';
 
@@ -16,20 +16,11 @@ import OrderQuantity3 from '../OrderQuantity3/OrderQuantity3';
 import OrderReview4 from '../OrderReview4/OrderReview4';
 import OrderPayment5 from '../OrderPayment5/OrderPayment5';
 import OrderSummary from '../OrderSummary/OrderSummary';
+import FormNavButton from '../FormNavButton/FormNavButton';
 
 
 
 class OrderPage extends Component {
-
-  handleClick = (event) => {
-    console.log(Number.isInteger(Number(this.props.location.pathname.substr(-1))))
-    // if (Number.isInteger(Number(this.props.location.pathname.substr(-1)))) {
-    // let nextPath = Number(this.props.location.pathname.substr(-1)) + Number(event.target.value);
-    // this.props.history.push(`/order/${Number(nextPath)}`);
-    // } else {
-    //   this.props.history.push('/order/1');
-    // }
-  }
 
   render() {
     return (
@@ -73,8 +64,16 @@ class OrderPage extends Component {
               <OrderSummary />
             </div>
             <div className="orderFormFlexChild orderFormButtonContainer">
-              <button id="previous" value='-1' onClick={this.handleClick}>Previous</button>
-              <button id="next" value='1' onClick={this.handleClick}>Next</button>
+              <FormNavButton 
+                path={this.props.history.location.pathname === '/order/2' ? null : this.props.history.location.pathname.substr(-1) - 1} 
+                text="Previous" 
+                disabled={this.props.history.location.pathname === '/order'} 
+              />
+              <FormNavButton 
+                path={this.props.history.location.pathname === '/order' ? 2 : Number(this.props.history.location.pathname.substr(-1)) + 1} 
+                text="Next" 
+                disabled={this.props.history.location.pathname === '/order/5'} 
+              />
             </div>
           </div>
         </div>
@@ -83,6 +82,4 @@ class OrderPage extends Component {
   }
 }
 
-// const mapStateToProps = state => ({ state });
-
-export default connect()(OrderPage);
+export default withRouter(OrderPage);
