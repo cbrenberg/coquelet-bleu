@@ -54,11 +54,20 @@ function* getRoasts() {
   }
 }
 
+function* submitOrder(action) {
+  try {
+    yield call(axios.post, '/api/orders', action.payload)
+  } catch (error) {
+    console.log('Error submitting order', error)
+  }
+}
+
 function* orderSaga() {
   yield takeLatest(ORDER_ACTIONS.CHOOSE_BEAN, chooseBean);
   yield takeLatest(ORDER_ACTIONS.CHOOSE_ROAST, chooseRoast);
   yield takeLatest(ORDER_ACTIONS.FETCH_INVENTORY, getInventory);
   yield takeLatest(ORDER_ACTIONS.FETCH_ROASTS, getRoasts);
+  yield takeLatest(ORDER_ACTIONS.SUBMIT_ORDER, submitOrder);
 }
 
 export default orderSaga;
