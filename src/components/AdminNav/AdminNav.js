@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import {
-  NavLink
+  NavLink,
+  withRouter,
 } from 'react-router-dom';
 
 import { connect } from 'react-redux';
+
+import './AdminNav.css';
 
 
 class AdminNav extends Component {
@@ -11,12 +14,12 @@ class AdminNav extends Component {
   render() {
     return (
       <div className="verticalNav">
-        <NavLink to='/admin/orders'>Manage Orders</NavLink>
-        <NavLink to='/admin/inventory'>View Inventory</NavLink>
-        <NavLink to='/admin/orders'>Add Beans</NavLink>
+        <NavLink exact={true} className="viewNav" to='/admin/orders'>Manage Orders</NavLink>
+        <NavLink exact={true} className="viewNav" to='/admin/inventory'>View Inventory</NavLink>
+        <NavLink exact={true} className="viewNav" to='/admin/orders'>Add Beans</NavLink>
       </div>
     )
   }
 }
 
-export default connect()(AdminNav);
+export default withRouter(connect()(AdminNav));

@@ -41,6 +41,7 @@ class App extends Component {
             <Switch>
               {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
               <Redirect exact from="/" to="/home" />
+              <Redirect exact from="/admin" to="/admin/orders" />
               {/* Visiting localhost:3000/order will show the first page of the ordering process.
             This is a route anyone can see, no login necessary */}
               <Route

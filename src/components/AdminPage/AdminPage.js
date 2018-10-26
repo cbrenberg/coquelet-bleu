@@ -24,18 +24,18 @@ class OrderPage extends Component {
       <Router>
         <div id="adminPage">
           <div className="orderFormFlexContainer">
-            <div className="orderFormFlexChild">
+            <div className="orderFormFlexChild nav">
               <AdminNav />
             </div>
-            <div className="orderFormFlexChild">
+            <div className="orderFormFlexChild table">
               {/* <div className="orderFormNav"> */}
               <Switch>
-                <ProtectedRoute
+                <Route
                   exact
                   path="/admin/orders"
                   component={OrderTable}
                 />
-                <ProtectedRoute
+                <Route
                   exact
                   path="/admin/inventory"
                   component={InventoryTable}

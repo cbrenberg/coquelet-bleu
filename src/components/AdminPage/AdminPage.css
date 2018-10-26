@@ -1,8 +1,17 @@
 #adminPage {
-  width: 80%;
-  height: 80%;
+  width: 90vw;
+  height: 60vh;
   margin: 2% auto;
-  padding: 2%;
   background-color: white;
-  opacity: 0.9;
+  opacity: 0.95;
+}
+
+.orderFormFlexChild.nav {
+  width: 12vw;
+  height: 60vh;
+  background-color: lightgray;
+}
+
+.orderFormFlexChild.table {
+  width: 75vw;
 }
