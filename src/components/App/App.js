@@ -18,7 +18,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import OrderPage from '../OrderPage/OrderPage';
 import HomePage from '../HomePage/HomePage';
 import LoginPage from '../LoginPage/LoginPage';
-import OrderTable from '../OrderTable/OrderTable';
+import AdminPage from '../AdminPage/AdminPage';
 import InventoryTable from '../InventoryTable/InventoryTable';
 import Nav from '../Nav/Nav';
 
@@ -54,9 +54,8 @@ class App extends Component {
                 component={HomePage}
               />
               <ProtectedRoute
-                exact
                 path="/admin"
-                component={OrderTable}
+                component={AdminPage}
               />
               <ProtectedRoute
                 exact

@@ -15,7 +15,6 @@ import OrderRoast2 from '../OrderRoast2/OrderRoast2';
 import OrderQuantity3 from '../OrderQuantity3/OrderQuantity3';
 import OrderReview4 from '../OrderReview4/OrderReview4';
 import OrderPayment5 from '../OrderPayment5/OrderPayment5';
-import OrderSummary from '../OrderSummary/OrderSummary';
 import FormNavButton from '../FormNavButton/FormNavButton';
 
 
