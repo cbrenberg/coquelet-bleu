@@ -7,9 +7,9 @@ const Nav = () => (
     <NavLink className="nav-item" to="/home">
       Home
     </NavLink>
-      <NavLink className="nav-item" to="/order">
-        Order
-      </NavLink>
+    <NavLink className="nav-item" to="/order">
+      Order
+    </NavLink>
   </div>
 );
 

@@ -3,20 +3,12 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import ORDER_ACTIONS from '../../redux/actions/orderActions';
 
 class InventoryTable extends Component {
   state = {
     data: [],
   };
-
-  getInventory = () => {
-    Axios.get('/inventory')
-      .then(response => {
-        this.props.dispatch({ type: 'GET_INVENTORY', payload: response.data })
-        this.setState({data: response.data})
-      })
-      .catch(error => console.log('Error getting orders:', error))
-  }
 
   getDetails = (id) => {
     alert(`You have requested details for id: ${id}`);
@@ -29,7 +21,7 @@ class InventoryTable extends Component {
         contentEditable
         suppressContentEditableWarning
         onBlur={e => {
-          const data = [...this.props.inventory];
+          const data = [...this.props.beansInStock];
           data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
           this.setState({ data });
           this.props.dispatch({
@@ -54,7 +46,11 @@ class InventoryTable extends Component {
   }
 
   componentDidMount() {
-    this.getInventory();
+    this.props.dispatch({ type: ORDER_ACTIONS.FETCH_INVENTORY });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ data: nextProps.beansInStock })
   }
 
   render() {
@@ -114,12 +110,12 @@ class InventoryTable extends Component {
 
         </ReactTable>
 
-        <pre>{JSON.stringify(this.state, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ inventory }) => ({ inventory })
+const mapStateToProps = ({ inventory }) => ({ beansInStock: inventory.beansInStock })
 
 export default connect(mapStateToProps)(InventoryTable);

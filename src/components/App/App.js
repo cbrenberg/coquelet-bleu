@@ -19,6 +19,7 @@ import OrderPage from '../OrderPage/OrderPage';
 import HomePage from '../HomePage/HomePage';
 import LoginPage from '../LoginPage/LoginPage';
 import OrderTable from '../OrderTable/OrderTable';
+import InventoryTable from '../InventoryTable/InventoryTable';
 import Nav from '../Nav/Nav';
 
 import './App.css';
@@ -56,6 +57,11 @@ class App extends Component {
                 exact
                 path="/admin"
                 component={OrderTable}
+              />
+              <ProtectedRoute
+                exact
+                path="/inventory"
+                component={InventoryTable}
               />
               {/* This will be the protected route to the admin side of the app, and only visible when logged in. */}
               <ProtectedRoute
