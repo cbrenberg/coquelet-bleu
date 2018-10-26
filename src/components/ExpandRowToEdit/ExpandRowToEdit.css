@@ -1,0 +1,35 @@
+.editInventory {
+  width: 90%;
+  border: 1px solid gray;
+  background-color: whitesmoke;
+  overflow: scroll;
+}
+
+.inputsDiv {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 20vh;
+
+}
+
+.editInventory label {
+  padding: 5px;
+}
+
+.editInventory textarea, .editInventory input {
+  vertical-align: top;
+  float: right;
+  width: 20vw;
+  margin: 0;
+  resize: none;
+  border: 1px solid gainsboro;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.editInventorySubmit {
+  position: relative;
+  left: 85%;
+}

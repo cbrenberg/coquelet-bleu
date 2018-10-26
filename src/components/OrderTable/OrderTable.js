@@ -23,6 +23,7 @@ class OrderTable extends Component {
         <h1>Manage Orders</h1>
         <ReactTable
           data={this.props.admin.orderList}
+          
           columns={[
             {
               id: "timestamp",

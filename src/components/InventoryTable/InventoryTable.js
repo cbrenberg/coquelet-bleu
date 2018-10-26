@@ -4,6 +4,8 @@ import 'react-table/react-table.css';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
+import ExpandRowToEdit from '../ExpandRowToEdit/ExpandRowToEdit';
+
 
 class InventoryTable extends Component {
   state = {
@@ -56,10 +58,13 @@ class InventoryTable extends Component {
   render() {
     const {data} = this.state;
     return (
-      <div className="orderTable">
+      <div className="inventoryTable">
         <h1>Manage Inventory</h1>
         <ReactTable
           data={data}
+          SubComponent={row => (
+            <ExpandRowToEdit original={row.original}/>
+          )}
           columns={[
             {
               Header: "Origin",
@@ -95,14 +100,14 @@ class InventoryTable extends Component {
               accessor: "roasting_notes",
               Cell: this.renderEditable,
             },
-            {
-              Header: "Details",
-              accessor: "id",
-              Cell: row => (
-                <button onClick={() => this.getDetails(row.value)}>More Details</button>
-              )
+            // {
+            //   Header: "Details",
+            //   accessor: "id",
+            //   Cell: row => (
+            //     <button onClick={() => this.getDetails(row.value)}>More Details</button>
+            //   )
 
-            }
+            // }
           ]}
           defaultPageSize={10}
           className="-striped -highlight"
