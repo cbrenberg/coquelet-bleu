@@ -2,66 +2,31 @@ import React, { Component } from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { connect } from 'react-redux';
-import Axios from 'axios';
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
 import ExpandRowToEdit from '../ExpandRowToEdit/ExpandRowToEdit';
+import editIcon from '../../images/edit.svg';
+import closeIcon from '../../images/x.svg';
 
 
 class InventoryTable extends Component {
-  state = {
-    data: [],
-  };
-
-  getDetails = (id) => {
-    alert(`You have requested details for id: ${id}`);
-  }
-
-  renderEditable = (cellInfo) => {
-    return (
-      <div
-        style={{ backgroundColor: "#fafafa" }}
-        contentEditable
-        suppressContentEditableWarning
-        onBlur={e => {
-          const data = [...this.props.beansInStock];
-          data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
-          this.setState({ data });
-          this.props.dispatch({
-            type: 'EDIT INVENTORY',
-            payload: data,
-          })
-          Axios({
-            method: 'PUT',
-            url: '/inventory',
-            data: {
-              id: cellInfo.row.id,
-              value: e.target.innerHTML,
-              column: cellInfo.column.id,
-            }
-          })
-        }}
-        dangerouslySetInnerHTML={{
-          __html: this.state.data[cellInfo.index][cellInfo.column.id]
-        }}
-      />
-    );
-  }
+  // state = {
+  //   data: [],
+  // };
 
   componentDidMount() {
     this.props.dispatch({ type: ORDER_ACTIONS.FETCH_INVENTORY });
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ data: nextProps.beansInStock })
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({ data: nextProps.beansInStock })
+  // }
 
   render() {
-    const {data} = this.state;
     return (
       <div className="inventoryTable">
         <h1>Manage Inventory</h1>
         <ReactTable
-          data={data}
+          data={this.props.beansInStock}
           SubComponent={row => (
             <ExpandRowToEdit original={row.original}/>
           )}
@@ -69,12 +34,10 @@ class InventoryTable extends Component {
             {
               Header: "Origin",
               accessor: "name",
-              Cell: this.renderEditable,
             },
             {
               Header: "Description",
               accessor: "origin_description",
-              Cell: this.renderEditable,
             },
             {
               Header: "Quantity",
@@ -93,21 +56,28 @@ class InventoryTable extends Component {
             {
               Header: "Flavor Description",
               accessor: "flavor_description",
-              Cell: this.renderEditable,
             },
             {
               Header: "Other Notes",
-              accessor: "roasting_notes",
-              Cell: this.renderEditable,
+              accessor: "notes",
             },
-            // {
-            //   Header: "Details",
-            //   accessor: "id",
-            //   Cell: row => (
-            //     <button onClick={() => this.getDetails(row.value)}>More Details</button>
-            //   )
-
-            // }
+            {
+              expander: true,
+              Expander: ({ isExpanded, ...rest }) =>
+                <div>
+                  {isExpanded
+                    ? <img src={closeIcon} alt="edit" width='50%' />
+                    : <img src={editIcon} alt="edit" width='50%'/>}
+                </div>,
+              style: {
+                cursor: "pointer",
+                fontSize: 18,
+                padding: "0",
+                textAlign: "center",
+                userSelect: "none",
+                margin: 'auto',
+              },
+            }
           ]}
           defaultPageSize={10}
           className="-striped -highlight"

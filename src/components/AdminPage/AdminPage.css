@@ -13,5 +13,9 @@
 }
 
 .orderFormFlexChild.table {
-  width: 75vw;
+  width: 78vw;
+}
+
+.inventoryTable {
+  width: 100%;
 }

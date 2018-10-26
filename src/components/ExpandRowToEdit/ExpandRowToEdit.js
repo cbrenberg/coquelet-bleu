@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ORDER_ACTIONS from '../../redux/actions/orderActions';
 import './ExpandRowToEdit.css'
 
 class ExpandRowToEdit extends Component {
@@ -14,6 +15,7 @@ class ExpandRowToEdit extends Component {
   submitForm = (event) => {
     event.preventDefault();
     console.log('submitting changes')
+    this.props.dispatch({ type: ORDER_ACTIONS.EDIT_INVENTORY, payload: this.state })
   }
 
 
@@ -21,23 +23,26 @@ class ExpandRowToEdit extends Component {
     return (
       <form className="editInventory" onSubmit={this.submitForm}>
         <div className="inputsDiv">
-          <label>Origin
-            <input name='name' value={this.state.name} onChange={this.handleChange} placeholder={this.props.original.name} />
+          <label>Origin:
+            <input name='name' value={this.state.name} onChange={this.handleChange} />
           </label>
-          <label>Description
-            <textarea rows="5" name='origin_description' value={this.state.origin_description} onChange={this.handleChange} placeholder={this.props.original.origin_description} />
+          <label>Description:
+            <textarea rows="5" name='origin_description' value={this.state.origin_description} onChange={this.handleChange} />
           </label>
-          <label>Quantity (oz.)
-            <input name='quantity' value={this.state.quantity} onChange={this.handleChange} placeholder={this.props.original.quantity} />
+          <label>Quantity (oz.):
+            <input name='quantity' value={this.state.quantity} onChange={this.handleChange} />
           </label>
-          <label>Flavor Description
-            <textarea rows="5" name='flavor_description' value={this.state.flavor_description} onChange={this.handleChange} placeholder={this.props.original.flavor_description} />
+          <label>Image URL:
+            <input name='image_url' value={this.state.image_url} onChange={this.handleChange} />
           </label>
-          <label> Other Notes (not public)
-            <textarea rows="5" name='notes' value={this.state.notes} onChange={this.handleChange} placeholder={this.props.original.notes} />
+          <label>Flavor Description:
+            <textarea rows="5" name='flavor_description' value={this.state.flavor_description} onChange={this.handleChange} />
+          </label>
+          <label> Other Notes (not public):
+            <textarea rows="5" name='notes' value={this.state.notes} onChange={this.handleChange} />
           </label>
         </div>
-        <button class="editInventorySubmit" type="submit">Submit Changes</button>
+        <button className="editInventorySubmit" type="submit">Submit Changes</button>
 
         {/* <pre>{JSON.stringify(this.state)}</pre> */}
       </form>
