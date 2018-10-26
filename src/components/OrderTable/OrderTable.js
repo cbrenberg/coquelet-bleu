@@ -4,6 +4,7 @@ import 'react-table/react-table.css';
 import { connect } from 'react-redux';
 import './OrderTable.css';
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
+import moment from 'moment';
 
 class OrderTable extends Component {
 
@@ -23,6 +24,13 @@ class OrderTable extends Component {
         <ReactTable
           data={this.props.admin.orderList}
           columns={[
+            {
+              id: "timestamp",
+              Header: "Order Placed",
+              accessor: data => {
+                return moment(data.timestamp).format("ddd, MMM Do")
+              },
+            },
             {
               Header: "First Name",
               accessor: "first_name",

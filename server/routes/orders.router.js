@@ -28,11 +28,13 @@ router.get('/', (req, res) => {
               "beans"."name", 
               "roast_levels"."roast",
               "orders"."quantity",
-              "order_status"."status"
+              "order_status"."status",
+              "orders"."timestamp"
               FROM "orders"
               JOIN "roast_levels" on "roast_levels"."id" = "orders"."roast"
               JOIN "beans" ON "beans"."id" = "orders"."bean"
-              JOIN "order_status" ON "orders"."order_status" = "order_status"."id";`)
+              JOIN "order_status" ON "orders"."order_status" = "order_status"."id"
+              ORDER BY "orders"."timestamp" DESC;`)
     .then(results => {
       console.log(results.rows);
       res.send(results.rows);
