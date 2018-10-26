@@ -5,6 +5,7 @@ import user from './userReducer';
 import newOrder from './newOrderReducer';
 import orderProgress from './orderProgressReducer';
 import inventory from './inventoryReducer';
+import admin from './adminReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   inventory, //contains information about order in progress
   orderProgress,
   newOrder,
+  admin,
 });
 
 export default rootReducer;
