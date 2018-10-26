@@ -52,7 +52,7 @@ class App extends Component {
                 path="/home"
                 component={HomePage}
               />
-              <Route
+              <ProtectedRoute
                 exact
                 path="/admin"
                 component={OrderTable}

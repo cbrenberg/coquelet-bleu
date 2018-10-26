@@ -32,12 +32,11 @@ class OrderTable extends Component {
               },
             },
             {
-              Header: "First Name",
-              accessor: "first_name",
-            },
-            {
-              Header: "Last Name",
-              accessor: "last_name",
+              id: "customerName",
+              Header: "Customer Name",
+              accessor: nameData => {
+                return nameData.first_name + ' ' + nameData.last_name
+              },
             },
             {
               Header: "Quantity",
