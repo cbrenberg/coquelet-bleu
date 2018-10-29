@@ -8,7 +8,7 @@ class HomePage extends Component {
     return (
       <>
       {/* <pre>{JSON.stringify(this.props, null, 2)}</pre> */}
-        <progress value={this.props.value} max='5' />
+        <progress id="orderProgress" value={this.props.value} max='5' />
         </>
     )
   }

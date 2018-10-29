@@ -27,7 +27,7 @@ class OrderPage extends Component {
         <div id="orderPage">
           <OrderProgressBar />
           <div className="orderFormFlexContainer">
-            <div className="orderFormFlexChild">
+            <div className="orderFormFlexChild nav">
               <OrderFormNav />
             </div>
             <div className="orderFormFlexChild">
