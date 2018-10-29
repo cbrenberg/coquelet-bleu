@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RoosterLogo from '../../images/rooster-logo-blue.png';
+import './Image.css';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -18,9 +19,7 @@ class Image extends Component {
 
     if (this.state.loaded) {
       return (
-        <img src={this.props.src}
-          height='200'
-          width='200'/>
+        <img id='selectedBean' src={this.props.src} alt="image of selected coffee bean"/>
         )
       } else {
       return (

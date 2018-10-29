@@ -3,7 +3,8 @@ import {
   HashRouter as Router,
   Route,
   Switch,
-  withRouter
+  withRouter,
+  Redirect
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './OrderPage.css';
@@ -33,8 +34,8 @@ class OrderPage extends Component {
               <OrderFormNav />
             </div>
             <div className="orderFormFlexChild content">
-              {/* <div className="orderFormNav"> */}
               <Switch>
+                {/* TODO: redirect to '/order' if selections have not been made */}
                 <Route
                   exact
                   path="/order"
@@ -61,7 +62,6 @@ class OrderPage extends Component {
                   component={OrderPayment5}
                 />
               </Switch>
-              {/* </div> */}
             </div>
             <div className="orderFormFlexChild orderFormButtonContainer">
               <FormNavButton 

@@ -40,7 +40,7 @@ class OrderQuantity extends Component {
     return (
       <div id="OrderQuantity">
         <h3>Order Form Page 3: Select Quantity</h3>
-        <p>You may select a quantity up to 1 lb. (16 oz.) in 4 oz. increments.</p>
+        {/* <p>You may select a quantity up to 1 lb. (16 oz.) in 4 oz. increments.</p> */}
         <select value={this.state.selection ? this.state.selection : ''} onChange={this.handleSelect}>
           <option value='' disabled>---How Many Beans?---</option>
           {this.state.quantities.map(item => {

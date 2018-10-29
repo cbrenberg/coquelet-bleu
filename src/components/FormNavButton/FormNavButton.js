@@ -14,7 +14,7 @@ const FormNavButton = (props) => {
           to={props.path === null ? '/order' : `/order/${props.path}`} 
           className={(props.hidden ? 'hidden' : null)}
         >
-          <img width='35px' src={props.src} alt={props.text} style={{color: 'gray'}}/>
+          <img width='30px' src={props.src} alt={props.text} style={{color: 'gray'}}/>
           {/* {JSON.stringify(props.location, null, 2)} */}
         </Link>
     )
