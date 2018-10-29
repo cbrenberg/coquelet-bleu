@@ -26,7 +26,7 @@ class OrderRoast extends Component {
         <select value={this.state.selection ? this.state.selection : ''} onChange={this.handleSelect}>
           <option value='' disabled>---Select a Roast---</option>
           {this.props.roastLevels.map(item => {
-            return <option key={item.id} value={item.id}>{item.roast}</option>
+            return <option key={item.id} value={item.id}>{this.props.suggestedRoasts.includes(item.roast) ? '*' : ''}{item.roast}</option>
           })}
         </select>
         <OrderSummary />
@@ -36,6 +36,6 @@ class OrderRoast extends Component {
   }
 }
 
-const mapStateToProps = ({ inventory }) => ({ roastLevels: inventory.roastLevels })
+const mapStateToProps = ({ inventory, newOrder }) => ({ roastLevels: inventory.roastLevels, suggestedRoasts: newOrder.toDisplay.bean.roasts })
 
 export default connect(mapStateToProps)(OrderRoast);

@@ -37,3 +37,9 @@
   width: 77%;
   padding: 0 3% 0 3%
 }
+
+#orderPage select {
+  width: 18vw;
+  height: 1.5rem;
+  font-size: 1em;
+}
