@@ -7,13 +7,14 @@
 }
 
 .container {
-  height: 100%;
+  height: 48vh;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   overflow: hidden;
+  padding-top: 2vh;
 }
 
 .imageDiv {
@@ -29,9 +30,9 @@
 
 .textDiv {
   width: 70%;
-  padding: 20px;
+  padding: 0 20px;
   border-left: 2px solid gainsboro;
-  align-self: stretch;
+  align-self: flex-start;
   position: relative;
 }
 
