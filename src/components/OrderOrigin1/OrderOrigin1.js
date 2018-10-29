@@ -35,6 +35,6 @@ class OrderOrigin extends Component {
   }
 }
 
-const mapStateToProps = ({ inventory }) => ({ beansInStock: inventory.beansInStock })
+const mapStateToProps = ({ inventory, newOrder }) => ({ beansInStock: inventory.beansInStock, selectedBean: newOrder.toDisplay.bean })
 
 export default connect(mapStateToProps)(OrderOrigin);

@@ -4,9 +4,9 @@
   width: 12vw;
 }
 
-.disabledLink {
+.viewNav.disabledLink {
   pointer-events: none;
-  color: gray;
+  color: darkgray;
 }
 
 .orderFormNav {

@@ -16,6 +16,8 @@ import OrderQuantity3 from '../OrderQuantity3/OrderQuantity3';
 import OrderReview4 from '../OrderReview4/OrderReview4';
 import OrderPayment5 from '../OrderPayment5/OrderPayment5';
 import FormNavButton from '../FormNavButton/FormNavButton';
+import UpArrow from '../../images/arrow-up-circle.svg';
+import DownArrow from '../../images/arrow-down-circle.svg';
 
 
 
@@ -30,7 +32,7 @@ class OrderPage extends Component {
             <div className="orderFormFlexChild nav">
               <OrderFormNav />
             </div>
-            <div className="orderFormFlexChild">
+            <div className="orderFormFlexChild content">
               {/* <div className="orderFormNav"> */}
               <Switch>
                 <Route
@@ -65,13 +67,15 @@ class OrderPage extends Component {
               <FormNavButton 
                 id="previous"
                 path={this.props.history.location.pathname === '/order/2' ? null : this.props.history.location.pathname.substr(-1) - 1} 
-                text="Previous" 
+                text="Previous Page" 
+                src={UpArrow}
                 hidden={this.props.history.location.pathname === '/order'}
               />
               <FormNavButton 
                 id="next"
                 path={this.props.history.location.pathname === '/order' ? 2 : Number(this.props.history.location.pathname.substr(-1)) + 1} 
-                text="Next" 
+                text="Next Page"
+                src={DownArrow}
                 hidden={this.props.history.location.pathname === '/order/5'} 
               />
             </div>
