@@ -15,7 +15,17 @@ const HomePage = () => (
           <img id="logo" src={RoosterLogo} />
         </div>
         <div className="textDiv">
-          <p>Description of the company, etc.</p>
+          <p>Coquelet Bleu Coffee roasts coffee beans to your exact specifications, one tiny batch at a time.</p>
+          <h3>Here's how it works:</h3>
+          <ol>
+            <li>Select your beans: Choose from any of the beans currently in stock.</li>
+            <li>Select your roast: From light to dark, we've got you covered.</li>
+            <li>Select your quantity: Up to one pound at a time.</li>
+            <li>Pay securely with Stripe</li>
+            <li>Await delivery: Your order will arrive when your beans are at their peak of flavor</li>
+          </ol>
+          <h3>Ready to get started?</h3>
+          <button>Click Here</button>
         </div>
       </div>
   </div>

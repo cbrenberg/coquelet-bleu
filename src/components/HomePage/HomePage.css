@@ -19,8 +19,8 @@
 }
 
 .imageDiv {
-  width: 40%;
-  align-self: center;
+  width: 35%;
+  align-self: flex-start;
 }
 
 #logo {
@@ -28,7 +28,10 @@
 }
 
 .textDiv {
-  width: 60%;
+  width: 70%;
   padding: 20px;
   border-left: 2px solid gainsboro;
+}
+#homePage h1 {
+  margin-bottom: 0;
 }
