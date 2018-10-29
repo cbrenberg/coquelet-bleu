@@ -1,13 +1,14 @@
 import React from 'react';
 import './HomePage.css';
 import RoosterLogo from '../../images/rooster-logo-blue.png';
+import { withRouter } from 'react-router-dom';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
 
-const HomePage = () => (
+const HomePage = withRouter((props) => (
   <div id="homePage">
       <h1>Welcome</h1>
       <div className="container">
@@ -24,11 +25,14 @@ const HomePage = () => (
             <li>Pay securely with Stripe</li>
             <li>Await delivery: Your order will arrive when your beans are at their peak of flavor</li>
           </ol>
-          <h3>Ready to get started?</h3>
-          <button>Click Here</button>
+          <button 
+            onClick={(event) => {
+              event.preventDefault();
+              props.history.push('/order');
+            }}>Click Here To Get Started</button>
         </div>
       </div>
   </div>
-);
+));
 
 export default HomePage;
