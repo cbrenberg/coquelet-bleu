@@ -15,7 +15,7 @@ const FormNavButton = (props) => {
           className={(props.hidden ? 'hidden' : null)}
         >
           {props.text}
-          {JSON.stringify(props.location, null, 2)}
+          {/* {JSON.stringify(props.location, null, 2)} */}
         </Link>
     )
 };
