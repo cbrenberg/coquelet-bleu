@@ -5,9 +5,19 @@ import { connect } from 'react-redux';
 import './OrderTable.css';
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
 import moment from 'moment';
+import moreIcon from '../../images/more-horizontal.svg';
+import OrderDetailsModal from '../OrderDetailsModal/OrderDetailsModal';
+
 
 class OrderTable extends Component {
-
+  state = {
+    viewDetails: false,
+    rowData: {
+      original: {
+        phone: '0000000000',
+      }
+    }
+  }
 
   getDetails = (id) => {
     alert(`You have requested details for id: ${id}`);
@@ -23,7 +33,7 @@ class OrderTable extends Component {
         {/* <h1>Manage Orders</h1> */}
         <ReactTable
           data={this.props.admin.orderList}
-          
+
           columns={[
             {
               id: "timestamp",
@@ -58,25 +68,31 @@ class OrderTable extends Component {
               Header: "Status",
               accessor: "status",
               Cell: row => (
-                <span style={{textTransform: 'capitalize'}}>
+                <span style={{ textTransform: 'capitalize' }}>
                   <span style={{
                     color: row.value === 'Unprocessed' ? '#ff2e00'
                       : row.value === 'In progress' ? '#ffbf00'
                         : '#57d500'
-                  }}> 
+                  }}>
                     &#x25cf;
-                  </span>  
-                   {' ' + row.value}
+                  </span>
+                  {' ' + row.value}
                 </span>
               )
             },
             {
               Header: "Details",
-              accessor: "id",
               Cell: row => (
-                <button onClick={() => this.getDetails(row.value)}>More Details</button>
-              )
-
+                // <img src={plusIcon} alt="view details" width='50%' />
+                <img src={moreIcon} alt="view details" width='20%' onClick={() => this.setState({ viewDetails: true, rowData: row })} />
+              ),
+              style: {
+                cursor: "pointer",
+                padding: "0",
+                textAlign: "center",
+                userSelect: "none",
+                margin: 'auto',
+              },
             }
           ]}
           defaultPageSize={10}
@@ -84,6 +100,8 @@ class OrderTable extends Component {
         >
 
         </ReactTable>
+
+        <OrderDetailsModal show={this.state.viewDetails} handleClose={() => this.setState({ viewDetails: false })} orderData={this.state.rowData.original}/> 
 
         {/* <pre>{JSON.stringify(this.props.admin.orderList, null, 2)}</pre> */}
       </div>
