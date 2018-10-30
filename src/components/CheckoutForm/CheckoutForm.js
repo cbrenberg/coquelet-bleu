@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {injectStripe, CardElement} from 'react-stripe-elements';
+import { injectStripe, CardElement } from 'react-stripe-elements';
 
 //redux action constants
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
@@ -29,18 +29,20 @@ class CheckoutForm extends Component {
   render() {
     return (
       <>
-      <form id="checkoutForm" onSubmit={this.handleSubmit}>
+        <form id="checkoutForm" onSubmit={this.handleSubmit}>
           <ContactInfoForm />
-        <label>Card Details
-          <CardElement />
-        </label>
-        <img src={StripeLogo} alt="Powered by stripe" href="http://www.stripe.com" />
-        <button type="submit">Place Order</button>
-      </form>
-      <OrderConfirmationModal show={this.props.success} handleClose={this.resetOrder}>
-        <h4>Congratulations!</h4>
-        <p> You placed an order. Stay tuned for updates.</p>
-      </OrderConfirmationModal>
+          <div className="stripeInputWithLogo">
+            <label>Card Details
+            <CardElement hidePostalCode/>
+            </label>
+            <img src={StripeLogo} alt="Powered by stripe" href="http://www.stripe.com" />
+          </div>
+          <button type="submit">Place Order</button>
+        </form>
+        <OrderConfirmationModal show={this.props.success} handleClose={this.resetOrder}>
+          <h4>Congratulations!</h4>
+          <p> You placed an order. Stay tuned for updates.</p>
+        </OrderConfirmationModal>
       </>
     )
   }

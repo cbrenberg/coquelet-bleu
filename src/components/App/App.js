@@ -89,7 +89,8 @@ class App extends Component {
             pauseOnVisibilityChange
             draggable
             pauseOnHover/>
-            <button onClick={()=>toast('Testing Toasts')}>Toast Me</button>
+            {/* button below is for testing toast styling in development */}
+            {/* <button onClick={()=>toast('Testing Toasts')}>Toast Me</button> */}
           <Footer />
         </>
       </Router>

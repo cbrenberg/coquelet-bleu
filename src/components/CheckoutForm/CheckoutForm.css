@@ -1,3 +1,51 @@
 form#checkoutForm {
-  min-width: 50vw;
+  width: 100%;
+  height: 50vh;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#checkoutForm button {
+  width: 80%;
+  height: 40px;
+  margin: auto;
+  background-color: rgba(33, 137, 193, 1);
+  color: white;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10%;
+  right: 7%;
+}
+
+.stripeInputWithLogo {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+}
+
+.StripeElement {
+  width: 41vw;
+  padding: 2%;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+
+.StripeElement--complete {
+  color: rgba(14, 124, 0, 0.5)
+}
+
+.StripeElement--invalid {
+  color: rgb(255, 0, 0, .5)
+}
+
+#checkoutForm img {
+  position: absolute;
+  bottom: 1vh;
+  right: 0;
 }
