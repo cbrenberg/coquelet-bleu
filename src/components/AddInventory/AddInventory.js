@@ -45,14 +45,14 @@ class AddInventory extends Component {
         <form id="inventoryFormParent" onSubmit={this.handleSubmit}>
           <div className="inventoryFormChild left">
             <label>Origin:
-          <input name="name" type="text" onChange={this.handleChange} value={this.state.name} />
+          <input required name="name" type="text" onChange={this.handleChange} value={this.state.name} />
             </label>
             <label>Origin Details:
-          <textarea rows='5' name="origin_description" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.origin_description} />
+          <textarea required rows='5' name="origin_description" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.origin_description} />
             </label>
             <br />
             <label>Flavor Description:
-          <textarea rows='5' name="flavor_description" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.flavor_description} />
+          <textarea required rows='5' name="flavor_description" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.flavor_description} />
             </label>
             <br />
             <label>Roasts: </label>
@@ -67,14 +67,14 @@ class AddInventory extends Component {
           </div>
           <div className="inventoryFormChild">
             <label>Image URL:
-          <input name="image_url" type="text" onChange={this.handleChange} value={this.state.image_url} />
+          <input required name="image_url" type="text" onChange={this.handleChange} value={this.state.image_url} />
             </label>
             <img id="inventoryImgPreview" alt="product preview" src={this.state.beanData.image_url ? this.state.beanData.image_url : RoosterLogoBW} />
             <label>Quantity (oz):
-          <input name="quantity" type="number" onChange={this.handleChange} value={this.state.quantity} />
+          <input required name="quantity" type="number" onChange={this.handleChange} value={this.state.quantity} />
             </label>
             <label>Other notes (visible only to you):
-          <textarea rows='5' name="notes" type="text" onChange={this.handleChange} value={this.state.notes} />
+          <textarea required rows='5' name="notes" type="text" onChange={this.handleChange} value={this.state.notes} />
             </label>
             <button type="submit">Add Inventory</button>
           </div>

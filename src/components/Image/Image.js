@@ -14,7 +14,7 @@ class Image extends Component {
 
     if (this.state.loaded) {
       return (
-        <img id='selectedBean' src={this.props.src} alt={this.props.beanName} />
+        <img id='selectedBean' src={this.props.src ? this.props.src : RoosterLogo} alt={this.props.beanName} />
         )
       } else {
       return (
