@@ -1,11 +1,8 @@
 .orderTable {
   background-color: white;
-  margin-left: 1vw;
-  padding-top: 2vh;
   width: 75vw;
-  height: 95%;
 }
 
-.ReactTable {
-  height: 55vh;
+.orderTable .ReactTable {
+  height: 100%;
 }

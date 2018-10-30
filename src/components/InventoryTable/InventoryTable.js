@@ -3,6 +3,7 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { connect } from 'react-redux';
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
+import './InventoryTable.css';
 import ExpandRowToEdit from '../ExpandRowToEdit/ExpandRowToEdit';
 import editIcon from '../../images/edit.svg';
 import closeIcon from '../../images/x.svg';
@@ -24,7 +25,6 @@ class InventoryTable extends Component {
   render() {
     return (
       <div className="inventoryTable">
-        <h1>Manage Inventory</h1>
         <ReactTable
           data={this.props.beansInStock}
           SubComponent={row => (

@@ -20,7 +20,7 @@ class OrderTable extends Component {
   render() {
     return (
       <div className="orderTable">
-        <h1>Manage Orders</h1>
+        {/* <h1>Manage Orders</h1> */}
         <ReactTable
           data={this.props.admin.orderList}
           
