@@ -8,7 +8,7 @@ const OrderConfirmationModal = ({ handleClose, show, children }) => {
     <div className={show ? "modal display-block" : "modal display-none"}>
       <section className="modal-main">
         {children}
-        <button onClick={handleClose}>close</button>
+        <button onClick={handleClose}>Close</button>
       </section>
     </div>
   );
