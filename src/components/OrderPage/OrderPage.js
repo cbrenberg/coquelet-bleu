@@ -7,6 +7,7 @@ import {
   Redirect
 } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import './OrderPage.css';
 
 import OrderProgressBar from '../OrderProgressBar/OrderProgressBar';

@@ -38,11 +38,16 @@ router.post('/roasts', (req, res) => {
 //UPDATE "beans" table from admin inventory table
 router.put('/', (req, res) => {
   console.log('/api/inventory PUT hit');
-  pool.query(`UPDATE "beans" SET "$1"='$2' WHERE "id"=$3;`, [req.body.column, req.body.value, req.body.id])
+  pool.query(`UPDATE "beans" SET ("name", "origin_description", "flavor_description", "image_url", "quantity", "notes")
+              = ($1, $2, $3, $4, $5, $6) WHERE "id"= $7;`,
+              [req.body.name, req.body.origin_description, req.body.flavor_description, req.body.image_url, req.body.quantity, req.body.notes, req.body.id])
     .then(() => {
       res.sendStatus(201);
     })
-    .catch(error => console.log('Error editing item:', error))
+    .catch(error => {
+      console.log('Error editing item:', error);
+      res.sendStatus(500);
+    })
 })
 
 //GET all in stock inventory for admin table display

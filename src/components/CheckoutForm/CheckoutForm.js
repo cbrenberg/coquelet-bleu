@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {injectStripe, CardElement} from 'react-stripe-elements';
+
+//redux action constants
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
+
+//view components
 import ContactInfoForm from '../ContactInfoForm/ContactInfoForm';
 import OrderConfirmationModal from '../OrderConfirmationModal/OrderConfirmationModal';
 import StripeLogo from '../../images/powered_by_stripe.png';
+//styles
 import './CheckoutForm.css';
 
 class CheckoutForm extends Component {

@@ -1,3 +1,4 @@
+//import node modules
 import React, { Component } from 'react';
 import {
   HashRouter as Router,
@@ -5,16 +6,18 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import { connect } from 'react-redux';
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+//action constants
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
 
+
+//import project components
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-
 import OrderPage from '../OrderPage/OrderPage';
 import HomePage from '../HomePage/HomePage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -73,6 +76,20 @@ class App extends Component {
               <Route render={() => <h1>404</h1>} />
             </Switch>
           </div>
+          {/* Allows any child component to display toast notifications */}
+          <ToastContainer 
+            position={toast.POSITION.TOP_RIGHT}
+            toastClassName="dark-toast"
+            transition={Slide}
+            autoClose={3500}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnVisibilityChange
+            draggable
+            pauseOnHover/>
+            <button onClick={()=>toast('Testing Toasts')}>Toast Me</button>
           <Footer />
         </>
       </Router>

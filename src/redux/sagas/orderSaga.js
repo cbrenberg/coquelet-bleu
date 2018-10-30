@@ -30,18 +30,6 @@ function* chooseRoast(action) {
   }
 }
 
-function* getInventory() {
-  try {
-    //get list of all beans currently in stock
-    const inventory = yield call(axios.get, 'api/inventory');
-    //store bean inventory list in redux store
-    yield put({ type: ORDER_ACTIONS.SET_INVENTORY, payload: inventory })
-  } catch (error) {
-    console.log('Error getting bean inventory', error);
-    
-  }
-}
-
 function* getRoasts() {
   try {
     //get list of all available roasts from database
@@ -66,7 +54,7 @@ function* submitOrder(action) {
 function* orderSaga() {
   yield takeLatest(ORDER_ACTIONS.CHOOSE_BEAN, chooseBean);
   yield takeLatest(ORDER_ACTIONS.CHOOSE_ROAST, chooseRoast);
-  yield takeLatest(ORDER_ACTIONS.FETCH_INVENTORY, getInventory);
+  
   yield takeLatest(ORDER_ACTIONS.FETCH_ROASTS, getRoasts);
   yield takeLatest(ORDER_ACTIONS.SUBMIT_ORDER, submitOrder);
 }

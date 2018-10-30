@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
 import RoosterLogoBW from '../../images/rooster-logo-bw.png';
 import './AddInventory.css';
