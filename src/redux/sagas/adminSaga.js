@@ -33,18 +33,20 @@ function* addInventory(action) {
     const newId = yield call(axios.post, '/api/inventory', action.payload.beanData);
     const roastData = {roasts: action.payload.roastLevels, id: newId.data.id};//USE THIS FOR DEALING WITH SECOND POST
     yield call(axios.post, '/api/inventory/roasts', roastData);
+    yield toast('Inventory added!');
   } catch (error) {
     console.log('Error retrieving order list:', error);
+    toast('Error adding inventory. Try again.', { className: 'warning-toast' })
   }
 }
 
 function* editInventory(action) {
   try {
     yield call(axios.put, '/api/inventory', action.payload);
-    yield toast('Inventory updated!');
     yield put({ type: ORDER_ACTIONS.FETCH_INVENTORY})
+    yield toast('Inventory updated!');
   } catch (error) {
-    toast.warning('Error updating inventory. Try again.')
+    toast('Error updating inventory. Try again.', { className: 'warning-toast'})
     console.log('Error updating inventory:', error);
   }
 }

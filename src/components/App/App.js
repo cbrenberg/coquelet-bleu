@@ -78,7 +78,7 @@ class App extends Component {
           </div>
           {/* Allows any child component to display toast notifications */}
           <ToastContainer 
-            position={toast.POSITION.TOP_RIGHT}
+            position={toast.POSITION.BOTTOM_RIGHT}
             toastClassName="dark-toast"
             transition={Slide}
             autoClose={3500}

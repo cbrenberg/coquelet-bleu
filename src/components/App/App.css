@@ -71,8 +71,15 @@ input {
 }
 
 .dark-toast {
-    background-color: rgba(50,50,50,.9);
+    background-color: rgba(50,50,50,.95);
     color: white;
+    text-align: center;
+    font-family: 'Krub';
+}
+
+.warning-toast {
+    background-color: rgba(218, 165, 32, .9);
+    color: black;
     text-align: center;
     font-family: 'Krub';
 }

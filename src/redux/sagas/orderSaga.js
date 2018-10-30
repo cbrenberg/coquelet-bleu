@@ -1,5 +1,6 @@
 import { put, takeLatest, call } from 'redux-saga/effects';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import ORDER_ACTIONS from '../actions/orderActions';
 
 // worker Saga: will be fired on "REGISTER" actions
@@ -38,23 +39,22 @@ function* getRoasts() {
     yield put({ type: ORDER_ACTIONS.STORE_ROASTS, payload: roastList })
   } catch (error) {
     console.log('Error getting roast inventory', error);
-
   }
 }
 
 function* submitOrder(action) {
   try {
     yield call(axios.post, '/api/orders', action.payload);
-    yield put({ type: 'ORDER_SUCCEEDED' })
+    yield put({ type: 'ORDER_SUCCEEDED' });
   } catch (error) {
-    console.log('Error submitting order', error)
+    console.log('Error submitting order', error);
+    toast('Error submitting order. Try again.', { className: 'warning-toast' });
   }
 }
 
 function* orderSaga() {
   yield takeLatest(ORDER_ACTIONS.CHOOSE_BEAN, chooseBean);
   yield takeLatest(ORDER_ACTIONS.CHOOSE_ROAST, chooseRoast);
-  
   yield takeLatest(ORDER_ACTIONS.FETCH_ROASTS, getRoasts);
   yield takeLatest(ORDER_ACTIONS.SUBMIT_ORDER, submitOrder);
 }

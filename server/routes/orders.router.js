@@ -7,10 +7,10 @@ router.post('/', (req, res) => {
   pool.query(`INSERT INTO "orders" ("first_name", "last_name", "street_address", "city", "state", "zipcode", "phone", "email", "bean", "roast", "quantity")
               VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);`, 
               [req.body.first_name, req.body.last_name, req.body.street_address, req.body.city, req.body.state, req.body.zipcode, req.body.phone, req.body.email, req.body.bean, req.body.roast, req.body.quantity])
-    .then(res.sendStatus(201))
+    .then(() => res.sendStatus(201))
     .catch(error => {
-      console.log('Error submitting order', error);
       res.sendStatus(500);
+      console.log('Error submitting order', error);
     })
 })
 
