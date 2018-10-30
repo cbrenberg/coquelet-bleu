@@ -6,12 +6,33 @@ const router = express.Router();
 
 router.post('/', (req, res) => {
   console.log('req.body:', req.body);
-  pool.query(`INSERT INTO "beans" ("name", "origin_description", "flavor_description", "image_url", "quantity")
-              VALUES ($1, $2, $3, $4, $5);`,
-              [req.body.name, req.body.origin_description, req.body.flavor_description, req.body.image_url, req.body.quantity])
-    .then(() => res.sendStatus(201))
+  pool.query(`INSERT INTO "beans" ("name", "origin_description", "flavor_description", "image_url", "quantity", "notes")
+              VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id";`,
+              [req.body.name, req.body.origin_description, req.body.flavor_description, req.body.image_url, req.body.quantity, req.body.notes])
+    .then((results) => {
+      console.log('back from /api/inventory with results=', results.rows[0])
+      res.send(results.rows[0]);
+    })
     .catch(error => {
       console.log('Error submitting order', error);
+      res.sendStatus(500);
+    })
+})
+
+
+// TODO: this POST route depends on the newly generated ID of the previous POST route to "beans" table... How to do it?
+router.post('/roasts', (req, res) => {
+  const values = Object.keys(req.body.roasts).map(item => {
+    return `(${req.body.id}, ${item})`
+  }).join(',');
+  console.log('/api/inventory/roasts post values:', values)
+  pool.query(`INSERT INTO "roast_junction" ("bean_id", "roast_id")
+              VALUES ${values};`)
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch(error => {
+      console.log('Error adding roast levels:', error);
       res.sendStatus(500);
     })
 })
@@ -32,7 +53,7 @@ router.get('/', (req, res) => {
   pool.query(`SELECT outerBean."id", outerBean."flavor_description", outerBean."image_url", outerBean."name", outerBean."origin_description", outerBean."quantity", outerBean."notes", 
                 (SELECT array_agg("roast_levels"."roast") as "roasts" FROM "roast_levels"
                   JOIN "roast_junction" ON "roast_junction"."roast_id"="roast_levels"."id"
-                  JOIN "beans" ON "roast_junction"."bean_id" = "beans"."id"
+                  LEFT JOIN "beans" ON "roast_junction"."bean_id" = "beans"."id"
                   WHERE "roast_junction"."bean_id" = outerBean."id")
               FROM "beans" outerBean;`)
     .then(results => {
@@ -47,7 +68,7 @@ router.get('/', (req, res) => {
 
 //GET just one bean type
 router.get('/:id', (req, res) => {
-  console.log('/api/inventory GET hit');
+  console.log('/api/inventory/:id GET hit');
   pool.query(`SELECT outerBean."id", outerBean."flavor_description", outerBean."image_url", outerBean."name", outerBean."origin_description", outerBean."quantity", 
                 (SELECT array_agg("roast_levels"."roast") as "roasts" FROM "roast_levels"
                   JOIN "roast_junction" ON "roast_junction"."roast_id"="roast_levels"."id"

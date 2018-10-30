@@ -17,6 +17,10 @@
   padding-top: 2vh;
 }
 
+#homePage .container {
+  height: 55vh;
+}
+
 .imageDiv {
   width: 33%;
   align-self: flex-start;
@@ -32,8 +36,9 @@
   width: 70%;
   padding: 0 20px;
   border-left: 2px solid gainsboro;
-  align-self: flex-start;
+  align-self: stretch;
   position: relative;
+  overflow-y: scroll;
 }
 
 #homePage button {
@@ -47,8 +52,8 @@
   border-radius: 2px;
   box-shadow: 3px 3px 2px lightgray;
   cursor: pointer;
-  position: absolute;
-  bottom: 0;
+  /* position: absolute;
+  bottom: 0; */
 }
 
 #homePage li {

@@ -16,7 +16,7 @@ class AdminNav extends Component {
       <div className="verticalNav">
         <NavLink exact={true} className="viewNav" to='/admin/orders'>Manage Orders</NavLink>
         <NavLink exact={true} className="viewNav" to='/admin/inventory'>View Inventory</NavLink>
-        <NavLink exact={true} className="viewNav" to='/admin/orders'>Add Beans</NavLink>
+        <NavLink exact={true} className="viewNav" to='/admin/add'>Add Beans</NavLink>
       </div>
     )
   }

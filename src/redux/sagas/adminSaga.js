@@ -15,8 +15,19 @@ function* getOrders() {
   }
 }
 
+function* addInventory(action) {
+  try {
+    const newId = yield call(axios.post, '/api/inventory', action.payload.beanData);
+    const roastData = {roasts: action.payload.roastLevels, id: newId.data.id};//USE THIS FOR DEALING WITH SECOND POST
+    yield call(axios.post, '/api/inventory/roasts', roastData);
+  } catch (error) {
+    console.log('Error retrieving order list:', error);
+  }
+}
+
 function* adminSaga() {
   yield takeLatest(ORDER_ACTIONS.GET_ORDERS, getOrders);
+  yield takeLatest(ORDER_ACTIONS.ADD_INVENTORY, addInventory);
 }
 
 export default adminSaga;

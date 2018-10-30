@@ -12,7 +12,7 @@ import './AdminPage.css';
 import AdminNav from '../AdminNav/AdminNav';
 import OrderTable from '../OrderTable/OrderTable';
 import InventoryTable from '../InventoryTable/InventoryTable';
-import OrderRoast2 from '../OrderRoast2/OrderRoast2';
+import AddInventory from '../AddInventory/AddInventory';
 
 
 
@@ -41,11 +41,11 @@ class OrderPage extends Component {
                   component={InventoryTable}
                 />
                 {/* TODO: ADD INVENTORY COMPONENT GOES BELOW (OR IN TABLE) */}
-                {/* <Route
+                <Route
                   exact
                   path="/admin/add"
-                  component={}
-                /> */}
+                  component={AddInventory}
+                />
               </Switch>
               {/* </div> */}
             </div>
