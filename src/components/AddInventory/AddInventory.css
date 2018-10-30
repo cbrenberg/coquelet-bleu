@@ -12,7 +12,7 @@
 .inventoryFormChild {
   display: flex;
   flex-direction: column;
-  margin: 2%;
+  padding: 2%;
   width: 50%;
 }
 
@@ -23,6 +23,27 @@
 #inventoryImgPreview {
   max-width: 160px;
   border: 1px solid black;
+}
+
+#inventoryFormParent textarea, #inventoryFormParent input {
+  vertical-align: top;
+  float: right;
+  width: 20vw;
+  margin: 0;
+  resize: none;
+  border: 1px solid gainsboro;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#inventoryFormParent label {
+  margin-bottom: 2%;
+}
+
+#inventoryFormParent img {
+  align-self: center;
+  margin: 3%;
 }
 
 .inventoryFormChild button {

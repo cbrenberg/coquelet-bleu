@@ -48,19 +48,19 @@ class AddInventory extends Component {
           <input name="name" type="text" onChange={this.handleChange} value={this.state.name} />
             </label>
             <label>Origin Details:
-          <textarea name="origin_description" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.origin_description} />
+          <textarea rows='5' name="origin_description" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.origin_description} />
             </label>
             <br />
             <label>Flavor Description:
-          <textarea name="flavor_description" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.flavor_description} />
+          <textarea rows='5' name="flavor_description" type="text" onBlur={this.handleBlur} onChange={this.handleChange} value={this.state.flavor_description} />
             </label>
             <br />
             <label>Roasts: </label>
             <br />
             {this.props.roastLevels.map(roast => {
               return (
-                <label key={roast.id}>
-                  <input type="checkbox" value={roast.id} onChange={this.handleSelect} /> {roast.roast}
+                <label key={roast.id}> {roast.roast}
+                  <input type="checkbox" value={roast.id} onChange={this.handleSelect} /> 
                 </label>
               )
             })}
@@ -74,7 +74,7 @@ class AddInventory extends Component {
           <input name="quantity" type="number" onChange={this.handleChange} value={this.state.quantity} />
             </label>
             <label>Other notes (visible only to you):
-          <textarea name="notes" type="text" onChange={this.handleChange} value={this.state.notes} />
+          <textarea rows='5' name="notes" type="text" onChange={this.handleChange} value={this.state.notes} />
             </label>
             <button type="submit">Add Inventory</button>
           </div>
