@@ -13,7 +13,7 @@ const HomePage = withRouter((props) => (
     <div className="container">
       <div className="imageDiv">
         <h1>Welcome</h1>
-        <img id="logo" src={RoosterLogoSansBG} />
+        <img id="logo" src={RoosterLogoSansBG} alt="Coquelet Bleu logo" />
       </div>
       <div className="textDiv">
         <p>Coquelet Bleu Coffee roasts coffee beans to your exact specifications, one tiny batch at a time.</p>

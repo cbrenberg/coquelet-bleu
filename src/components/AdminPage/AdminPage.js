@@ -4,7 +4,6 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import { connect } from 'react-redux';
 import './AdminPage.css';

@@ -68,7 +68,7 @@ class AddInventory extends Component {
             <label>Image URL:
           <input name="image_url" type="text" onChange={this.handleChange} value={this.state.image_url} />
             </label>
-            <img id="inventoryImgPreview" src={this.state.beanData.image_url ? this.state.beanData.image_url : RoosterLogoBW} />
+            <img id="inventoryImgPreview" alt="product preview" src={this.state.beanData.image_url ? this.state.beanData.image_url : RoosterLogoBW} />
             <label>Quantity (oz):
           <input name="quantity" type="number" onChange={this.handleChange} value={this.state.quantity} />
             </label>

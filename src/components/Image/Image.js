@@ -19,7 +19,7 @@ class Image extends Component {
 
     if (this.state.loaded) {
       return (
-        <img id='selectedBean' src={this.props.src} alt="image of selected coffee bean"/>
+        <img id='selectedBean' src={this.props.src} alt={this.props.beanName} />
         )
       } else {
       return (
@@ -33,6 +33,6 @@ class Image extends Component {
     }
   }
 
-  const mapStateToProps = ({ orderToDisplay }) => ({ orderToDisplay })
+  const mapStateToProps = ({ newOrder }) => ({ beanName: newOrder.toDisplay.bean.name })
     
   export default connect(mapStateToProps)(Image);
