@@ -1,5 +1,6 @@
 .editInventory {
   width: 90%;
+  height: 40vh;
   border: 1px solid gray;
   background-color: whitesmoke;
   overflow: scroll;
@@ -7,10 +8,14 @@
 
 .inputsDiv {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  max-height: 20vh;
+  flex-direction: row;
+}
 
+.inputsDivChild {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 40vh;
 }
 
 .editInventory label {
@@ -29,7 +34,11 @@
   box-sizing: border-box;
 }
 
-.editInventorySubmit {
-  position: relative;
-  left: 85%;
+button#editInventorySubmit {
+  width: 150px;
+  height: 40px;
+  background-color: #2189c1;
+  color: white;
+  border: none;
+  align-self: flex-end;
 }
