@@ -22,9 +22,7 @@ router.post('/', (req, res) => {
 
 // TODO: this POST route depends on the newly generated ID of the previous POST route to "beans" table... How to do it?
 router.post('/roasts', (req, res) => {
-  const values = Object.keys(req.body.roasts).map(item => {
-    return `(${req.body.id}, ${item})`
-  }).join(',');
+  const values = Object.keys(req.body.roasts).filter(item => req.body.roasts[item] === true).map(item => `(${req.body.id}, ${item})`).join(',');
   console.log('/api/inventory/roasts post values:', values)
   pool.query(`INSERT INTO "roast_junction" ("bean_id", "roast_id")
               VALUES ${values};`)
