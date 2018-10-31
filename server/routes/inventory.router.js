@@ -73,6 +73,16 @@ router.put('/', (req, res) => {
     })
 })
 
+router.put('/subtract', (req, res) => {
+  console.log('api/inventory/subtract PUT hit', req.body);
+  pool.query(`UPDATE "beans" SET "quantity" = "quantity" - $1 WHERE "id" = $2;`, [req.body.quantity, req.body.bean])
+    .then(() => res.sendStatus(200))
+    .catch(error => {
+      console.log('Error subtracting quantity from inventory', error);
+      res.sendStatus(500);
+    })
+})
+
 //GET all in stock inventory for admin table display
 router.get('/', (req, res) => {
   console.log('/api/inventory GET hit');

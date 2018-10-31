@@ -4,6 +4,15 @@ import './OrderDetailsModal.css';
 const OrderDetailsModal = ({ handleClose, handleStatusChange, show, orderData, statusCodes }) => {
   let phoneNumber = '(' + orderData.phone.substring(0, 3) + ') ' + orderData.phone.substring(3, 6) + '-' + orderData.phone.substring(6);
 
+  let defaultStatusCode = (currentValue, statusCodes) => {
+    for (let i in statusCodes) {
+      if (statusCodes[i].status === currentValue) {
+        console.log(statusCodes[i])
+        return statusCodes[i].id
+      }
+    }
+  }
+
   return (
     <div id="orderDetails" className={show ? "modal display-block" : "modal display-none"}>
       <section className="modal-main">
@@ -26,10 +35,10 @@ const OrderDetailsModal = ({ handleClose, handleStatusChange, show, orderData, s
             <div className="orderDetailRow"><span>Roast Level: </span><strong>{orderData.roast}</strong></div>
             <div className="orderDetailRow"><span>Quantity: </span><strong>{orderData.quantity} oz.</strong></div>
             <div className="orderDetailRow"><span>Order Status: </span>
-              <select name="order_status" onChange={handleStatusChange}>
+              <select name="order_status" onChange={handleStatusChange} value={defaultStatusCode(orderData.status, statusCodes)}>
                 {statusCodes.map(code => {
                   return (
-                    <option key={code.id} value={code.id} selected={code.status == orderData.status ? 'selected' : ''}>
+                    <option key={code.id} value={code.id}>
                       {code.status}
                     </option>
                   )
