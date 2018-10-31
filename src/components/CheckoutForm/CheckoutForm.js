@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { injectStripe, CardElement } from 'react-stripe-elements';
+import axios from 'axios';
 
 //redux action constants
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
@@ -15,10 +16,27 @@ import './CheckoutForm.css';
 
 class CheckoutForm extends Component {
 
+  async submit(ev) {
+    let { token } = await this.props.stripe.createToken({ 
+      name: this.props.toSubmit.first_name + ' ' + this.props.toSubmit.last_name,
+      address_zip: this.props.toSubmit.zipcode,
+    });
+    await axios.post('/charge', {
+      headers: { "Content-Type": "text/plain" },
+      data: token.id,
+      amount: this.props.toSubmit.cost,
+    }).then(response => {
+      console.log("Purchase Complete!");
+      this.props.dispatch({ type: ORDER_ACTIONS.SUBMIT_ORDER, payload: this.props.toSubmit })
+    }).catch(error => {
+      console.log('Error creating stripe charge:', error);
+    })
+    
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.dispatch({ type: ORDER_ACTIONS.SUBMIT_ORDER, payload: this.props.toSubmit })
+    this.submit();
   }
 
   resetOrder = () => {
