@@ -52,11 +52,23 @@ function* submitOrder(action) {
   }
 }
 
+function* editOrderStatus(action) {
+  try {
+    yield call(axios.put, '/api/orders/statuscodes', action.payload);
+    yield put({ type: ORDER_ACTIONS.GET_ORDERS });
+    yield toast('Order status updated successfully.');
+  } catch (error) {
+    console.log('Error editing order status code', error);
+    toast('Error updating order status. Please try again.', { className: 'warning-toast' });
+  }
+}
+
 function* orderSaga() {
   yield takeLatest(ORDER_ACTIONS.CHOOSE_BEAN, chooseBean);
   yield takeLatest(ORDER_ACTIONS.CHOOSE_ROAST, chooseRoast);
   yield takeLatest(ORDER_ACTIONS.FETCH_ROASTS, getRoasts);
   yield takeLatest(ORDER_ACTIONS.SUBMIT_ORDER, submitOrder);
+  yield takeLatest(ORDER_ACTIONS.EDIT_ORDER_STATUS, editOrderStatus);
 }
 
 export default orderSaga;

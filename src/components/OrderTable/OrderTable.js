@@ -25,6 +25,7 @@ class OrderTable extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: ORDER_ACTIONS.GET_ORDERS });
+    this.props.dispatch({ type: ORDER_ACTIONS.FETCH_STATUS_CODES });
   }
 
   render() {
@@ -101,7 +102,12 @@ class OrderTable extends Component {
 
         </ReactTable>
 
-        <OrderDetailsModal show={this.state.viewDetails} handleClose={() => this.setState({ viewDetails: false })} orderData={this.state.rowData.original}/> 
+        <OrderDetailsModal 
+          show={this.state.viewDetails} 
+          handleClose={() => this.setState({ ...this.state, viewDetails: false })} 
+          handleStatusChange={(event) => {this.props.dispatch({ type: ORDER_ACTIONS.EDIT_ORDER_STATUS, payload: { order_status : event.target.value, id: this.state.rowData.original.id }})}}
+          orderData={this.state.rowData.original} 
+          statusCodes={this.props.admin.statusCodes} /> 
 
         {/* <pre>{JSON.stringify(this.props.admin.orderList, null, 2)}</pre> */}
       </div>

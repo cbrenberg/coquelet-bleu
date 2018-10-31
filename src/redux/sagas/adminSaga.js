@@ -3,7 +3,6 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import ORDER_ACTIONS from '../actions/orderActions';
 
-// worker Saga: will be fired on "REGISTER" actions
 function* getOrders() {
   try {
     yield console.log('orderSaga running');
@@ -11,6 +10,17 @@ function* getOrders() {
     const orders = yield call(axios.get, `/api/orders`);
     // initiates storing list of orders in redux store
     yield put({ type: ORDER_ACTIONS.SET_ORDERS, payload: orders.data });
+  } catch (error) {
+    console.log('Error retrieving order list:', error);
+  }
+}
+
+function* getStatusCodes() {
+  try {
+    // gets list of status codes from db
+    const statusCodes = yield call(axios.get, `/api/orders/statuscodes`);
+    // initiates storing list of orders in redux store
+    yield put({ type: ORDER_ACTIONS.SET_STATUS_CODES, payload: statusCodes.data });
   } catch (error) {
     console.log('Error retrieving order list:', error);
   }
@@ -56,6 +66,7 @@ function* adminSaga() {
   yield takeLatest(ORDER_ACTIONS.ADD_INVENTORY, addInventory);
   yield takeLatest(ORDER_ACTIONS.EDIT_INVENTORY, editInventory);
   yield takeLatest(ORDER_ACTIONS.FETCH_INVENTORY, getInventory);
+  yield takeLatest(ORDER_ACTIONS.FETCH_STATUS_CODES, getStatusCodes);
 }
 
 export default adminSaga;

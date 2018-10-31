@@ -45,12 +45,12 @@ router.get('/', (req, res) => {
     })
 })
 
-router.put('/', (req, res) => {
-  console.log('/api/orders PUT hit');
+router.put('/statuscodes', (req, res) => {
+  console.log('/api/orders/statuscodes PUT hit');
   pool.query(`UPDATE "orders" SET "order_status"=$1 WHERE "id"=$2`, [req.body.order_status, req.body.id])
-    .then(() => res.sendStatus(201))
+    .then(() => res.sendStatus(200))
     .catch(error => {
-      console.log('Error editing order status', error);
+      console.log('Error updating order status', error);
       res.sendStatus(500);
     })
 })
@@ -64,5 +64,17 @@ router.delete('/', (req, res) => {
       res.sendStatus(500);
     })
 })
+
+router.get('/statuscodes', (req, res) => {
+  console.log('api/orders/statuscodes GET hit');
+  pool.query(`SELECT * FROM "order_status";`)
+    .then(results => res.send(results.rows))
+    .catch(error => {
+      console.log('Error getting order status codes', error);
+      res.sendStatus(500);
+    })
+})
+
+
 
 module.exports = router;

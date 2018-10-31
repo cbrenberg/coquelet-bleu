@@ -10,6 +10,16 @@ const orderList = (state = [], action) => {
   }
 };
 
+const statusCodes = (state = [], action ) => {
+  switch (action.type) {
+    case ORDER_ACTIONS.SET_STATUS_CODES:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   orderList,
+  statusCodes,
 });

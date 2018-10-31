@@ -1,7 +1,7 @@
 import React from 'react';
 import './OrderDetailsModal.css';
 
-const OrderDetailsModal = ({ handleClose, show, orderData }) => {
+const OrderDetailsModal = ({ handleClose, handleStatusChange, show, orderData, statusCodes }) => {
   let phoneNumber = '(' + orderData.phone.substring(0, 3) + ') ' + orderData.phone.substring(3, 6) + '-' + orderData.phone.substring(6);
 
   return (
@@ -19,7 +19,6 @@ const OrderDetailsModal = ({ handleClose, show, orderData }) => {
             <p><a href={'mailto:' + orderData.email + '?Subject=Order%20Update%20From%20Coquelet%20Bleu'} >{orderData.email}</a></p>
             <br />
             <p>{phoneNumber}</p>
-            {/* <p>{orderData.phone.substr(0, 2)} {orderData.phone.substr(3, 5)} - {orderData.phone.substr(6)}</p> */}
           </div>
           <div className="child right">
             <h3>Order Info</h3>
@@ -27,16 +26,19 @@ const OrderDetailsModal = ({ handleClose, show, orderData }) => {
             <div className="orderDetailRow"><span>Roast Level: </span><strong>{orderData.roast}</strong></div>
             <div className="orderDetailRow"><span>Quantity: </span><strong>{orderData.quantity} oz.</strong></div>
             <div className="orderDetailRow"><span>Order Status: </span>
-              <select value={orderData.status}>
-                <option>Unprocessed</option>
-                <option>In progress</option>
-                <option>Complete</option>
+              <select name="order_status" onChange={handleStatusChange}>
+                {statusCodes.map(code => {
+                  return (
+                    <option key={code.id} value={code.id}>
+                      {code.status}
+                    </option>
+                  )
+                })}
               </select>
             </div>
             <button onClick={handleClose}>Save and Close</button>
           </div>
         </div>
-        {/* <button onClick={handleClose}>Close</button> */}
       </section>
     </div>
   );
