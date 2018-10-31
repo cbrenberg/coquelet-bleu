@@ -5,8 +5,8 @@ const router = express.Router();
 //TODO: move this route back to /inventory
 
 //GET all roast levels to populate dropdown for customer
-router.get('/', (req, res) => {
-  console.log('/api/roasts GET hit');
+router.get('/roasts', (req, res) => {
+  console.log('/api/inventory/roasts GET hit');
   pool.query(`SELECT * FROM "roast_levels"`)
     .then(results => {
       res.send(results.rows);
@@ -17,8 +17,8 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
-  console.log('/api/roasts GET hit');
+router.get('/roasts/:id', (req, res) => {
+  console.log('/api/inventory/roasts GET hit');
   pool.query(`SELECT * FROM "roast_levels" WHERE "id"=$1;`, [req.params.id])
     .then(results => {
       res.send(results.rows);

@@ -21,7 +21,7 @@ function* chooseBean(action) {
 function* chooseRoast(action) {
   try {
     // gets bean information from server
-    const roast = yield call(axios.get, `api/roasts/${action.payload}`);
+    const roast = yield call(axios.get, `api/inventory/roasts/${action.payload}`);
     // set data for displaying on DOM
     yield put({ type: ORDER_ACTIONS.DISPLAY_ROAST_INFO, payload: roast.data[0] });
     //Store data with order to be submitted
@@ -34,7 +34,7 @@ function* chooseRoast(action) {
 function* getRoasts() {
   try {
     //get list of all available roasts from database
-    const roastList = yield call(axios.get, 'api/roasts');
+    const roastList = yield call(axios.get, 'api/inventory/roasts');
     //store list of all available roasts in redux store
     yield put({ type: ORDER_ACTIONS.STORE_ROASTS, payload: roastList })
   } catch (error) {

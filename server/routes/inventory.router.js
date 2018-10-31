@@ -19,8 +19,6 @@ router.post('/', (req, res) => {
     })
 })
 
-
-// TODO: this POST route depends on the newly generated ID of the previous POST route to "beans" table... How to do it?
 router.post('/roasts', (req, res) => {
   const values = Object.keys(req.body.roasts).filter(item => req.body.roasts[item] === true).map(item => `(${req.body.id}, ${item})`).join(',');
   console.log('/api/inventory/roasts post values:', values)
@@ -31,6 +29,31 @@ router.post('/roasts', (req, res) => {
     })
     .catch(error => {
       console.log('Error adding roast levels:', error);
+      res.sendStatus(500);
+    })
+})
+
+//GET all roast levels to populate dropdown for customer
+router.get('/roasts', (req, res) => {
+  console.log('/api/inventory/roasts GET hit');
+  pool.query(`SELECT * FROM "roast_levels"`)
+    .then(results => {
+      res.send(results.rows);
+    })
+    .catch(error => {
+      console.log('Error getting roast levels', error);
+      res.sendStatus(500);
+    })
+})
+
+router.get('/roasts/:id', (req, res) => {
+  console.log('/api/inventory/roasts GET hit');
+  pool.query(`SELECT * FROM "roast_levels" WHERE "id"=$1;`, [req.params.id])
+    .then(results => {
+      res.send(results.rows);
+    })
+    .catch(error => {
+      console.log('Error getting roast levels', error);
       res.sendStatus(500);
     })
 })
@@ -88,8 +111,6 @@ router.get('/:id', (req, res) => {
       res.sendStatus(500);
     })
 })
-
-
 
 router.delete('/', (req, res) => {
   console.log('/api/inventory DELETE hit. req.query:', req.query);

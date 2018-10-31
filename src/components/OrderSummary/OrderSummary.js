@@ -8,10 +8,8 @@ class OrderSummary extends Component {
   render() {
     //takes just the selected bean property from redux store
     const currentOrder = this.props.toDisplay;
-    //TODO: reorganize redux store to build an array for 'toDisplay' that can be mapped as <ul>
     if (!this.props.toDisplay.bean && !this.props.toDisplay.roast && !this.props.toDisplay.quantity) {
       return (
-        // <pre>{JSON.stringify(this.props, null, 2)}</pre>
         <h5>Make some choices, already!</h5>
       )
     } else if (this.props.toDisplay.bean && !this.props.toDisplay.roast && !this.props.toDisplay.quantity) {

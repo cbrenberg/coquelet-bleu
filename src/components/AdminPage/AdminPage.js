@@ -39,7 +39,6 @@ class OrderPage extends Component {
                   path="/admin/inventory"
                   component={InventoryTable}
                 />
-                {/* TODO: ADD INVENTORY COMPONENT GOES BELOW (OR IN TABLE) */}
                 <Route
                   exact
                   path="/admin/add"

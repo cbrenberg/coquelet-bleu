@@ -13,8 +13,6 @@
   flex-direction: row;
 }
 
-/* TODO: restyle vertical navigation bar with fixed width so text doesn't wrap */
-
 .orderFormButtonContainer {
   display: flex;
   flex-direction: column;
