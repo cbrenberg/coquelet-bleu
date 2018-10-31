@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { injectStripe, CardElement } from 'react-stripe-elements';
 import axios from 'axios';
+import {toast } from 'react-toastify';
 
 //redux action constants
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
@@ -15,6 +16,7 @@ import StripeLogo from '../../images/powered_by_stripe.png';
 import './CheckoutForm.css';
 
 class CheckoutForm extends Component {
+  toastId = null;
 
   async submit(ev) {
     let { token } = await this.props.stripe.createToken({ 
@@ -28,6 +30,7 @@ class CheckoutForm extends Component {
     }).then(response => {
       console.log("Purchase Complete!");
       this.props.dispatch({ type: ORDER_ACTIONS.SUBMIT_ORDER, payload: this.props.toSubmit })
+      toast.dismiss(this.toastid);
     }).catch(error => {
       console.log('Error creating stripe charge:', error);
     })
@@ -37,6 +40,7 @@ class CheckoutForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.submit();
+    this.toastId = toast.success('Your order is being processed...')
   }
 
   resetOrder = () => {
