@@ -29,14 +29,14 @@ const OrderDetailsModal = ({ handleClose, handleStatusChange, show, orderData, s
               <select name="order_status" onChange={handleStatusChange}>
                 {statusCodes.map(code => {
                   return (
-                    <option key={code.id} value={code.id}>
+                    <option key={code.id} value={code.id} selected={code.status == orderData.status ? 'selected' : ''}>
                       {code.status}
                     </option>
                   )
                 })}
               </select>
             </div>
-            <button onClick={handleClose}>Save and Close</button>
+            <button onClick={handleClose}>Close</button>
           </div>
         </div>
       </section>

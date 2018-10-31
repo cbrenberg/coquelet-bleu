@@ -49,3 +49,9 @@
   justify-content: space-evenly;
   margin-bottom: 5vh;
 }
+
+#orderDetails select {
+    width: 18vw;
+    height: 1.5rem;
+    font-size: 1em;
+}

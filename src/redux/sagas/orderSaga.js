@@ -45,6 +45,7 @@ function* getRoasts() {
 function* submitOrder(action) {
   try {
     yield call(axios.post, '/api/orders', action.payload);
+    //TODO: put to inventory to subtract amount
     yield put({ type: 'ORDER_SUCCEEDED' });
   } catch (error) {
     console.log('Error submitting order', error);
