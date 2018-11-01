@@ -4,7 +4,6 @@ import {
   Route,
   Switch,
   withRouter,
-  Redirect
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -36,7 +35,6 @@ class OrderPage extends Component {
             </div>
             <div className="orderFormFlexChild content">
               <Switch>
-                {/* TODO: redirect to '/order' if selections have not been made */}
                 <Route
                   exact
                   path="/order"
@@ -62,6 +60,7 @@ class OrderPage extends Component {
                   path="/order/5"
                   component={OrderPayment5}
                 />
+                
               </Switch>
             </div>
             <div className="orderFormFlexChild orderFormButtonContainer">

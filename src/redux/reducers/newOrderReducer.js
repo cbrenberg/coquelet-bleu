@@ -56,7 +56,7 @@ const toSubmit = (state = {}, action) => {
 //   "email": "cbrenberg@gmail.com",
 // }
 
-const toDisplay = (state = {}, action) => {
+const toDisplay = (state = { bean: {}, roast: {}, quantity: null}, action) => {
   switch (action.type) {
     case ORDER_ACTIONS.DISPLAY_BEAN_INFO:
       return { ...state, bean: action.payload };

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
 import OrderSummary from '../OrderSummary/OrderSummary';
 
@@ -37,7 +38,7 @@ class OrderQuantity extends Component {
   }
 
   render() {
-    return (
+    return (this.props.roastId ? (
       <div id="OrderQuantity">
         <h3>Order Form Page 3: Select Quantity</h3>
         {/* <p>You may select a quantity up to 1 lb. (16 oz.) in 4 oz. increments.</p> */}
@@ -51,10 +52,10 @@ class OrderQuantity extends Component {
         {/* <pre>{JSON.stringify(this.props.beanInfo, null, 2)}</pre>
         <pre>{JSON.stringify(this.state.quantities, null, 2)}</pre> */}
       </div>
-    )
+    ) : <Redirect to="/order/2" /> )
   }
 }
 
-const mapStateToProps = ({ newOrder }) => ({ beanInfo: newOrder.toDisplay.bean });
+const mapStateToProps = ({ newOrder }) => ({ roastId: newOrder.toDisplay.roast.id, beanInfo: newOrder.toDisplay.bean });
 
 export default connect(mapStateToProps)(OrderQuantity);

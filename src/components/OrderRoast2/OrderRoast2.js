@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
 import OrderSummary from '../OrderSummary/OrderSummary';
 
@@ -18,10 +19,8 @@ class OrderRoast extends Component {
   }
 
   render() {
-
-    return (
+    return (this.props.suggestedRoasts ?  (
       <div id="orderRoast">
-
         <h3>Order Form Page 2: Select Roast</h3>
         <select value={this.state.selection ? this.state.selection : ''} onChange={this.handleSelect}>
           <option value='' disabled>---Select a Roast---</option>
@@ -30,9 +29,8 @@ class OrderRoast extends Component {
           })}
         </select>
         <OrderSummary />
-        {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
       </div>
-    )
+    ) : <Redirect to="/order" /> )
   }
 }
 
