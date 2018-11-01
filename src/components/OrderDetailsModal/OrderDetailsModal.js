@@ -7,7 +7,7 @@ const OrderDetailsModal = ({ handleClose, handleStatusChange, show, orderData, s
   let defaultStatusCode = (currentValue, statusCodes) => {
     for (let i in statusCodes) {
       if (statusCodes[i].status === currentValue) {
-        console.log(statusCodes[i])
+        console.log(statusCodes[i].id)
         return statusCodes[i].id
       }
     }

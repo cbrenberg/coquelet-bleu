@@ -19,6 +19,25 @@ class OrderTable extends Component {
     }
   }
 
+  handleStatusChange = (event) => {
+    this.props.dispatch({ 
+      type: ORDER_ACTIONS.EDIT_ORDER_STATUS, 
+      payload: { 
+        order_status: event.target.value, 
+        id: this.state.rowData.original.id 
+      }
+    })
+    this.setState({ ...this.state, 
+      rowData: {
+        ...this.state.rowData,
+        original: {
+          ...this.state.rowData.original,
+          status: event.target.value
+        }
+      }})
+  }
+  
+
   getDetails = (id) => {
     alert(`You have requested details for id: ${id}`);
   }
@@ -105,7 +124,7 @@ class OrderTable extends Component {
         <OrderDetailsModal 
           show={this.state.viewDetails} 
           handleClose={() => this.setState({ ...this.state, viewDetails: false })} 
-          handleStatusChange={(event) => {this.props.dispatch({ type: ORDER_ACTIONS.EDIT_ORDER_STATUS, payload: { order_status : event.target.value, id: this.state.rowData.original.id }})}}
+          handleStatusChange={this.handleStatusChange}
           orderData={this.state.rowData.original} 
           statusCodes={this.props.admin.statusCodes} /> 
 

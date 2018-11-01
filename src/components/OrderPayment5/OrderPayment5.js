@@ -23,7 +23,6 @@ class OrderPayment extends Component {
             <CheckoutForm />
           </Elements>
         </StripeProvider>
-        {/* <pre>{JSON.stringify(this.props, null, 2)}</pre> */}
       </div>
     ) : <Redirect to="/order/3" /> )
   }

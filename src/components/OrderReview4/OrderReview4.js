@@ -4,8 +4,6 @@ import { Redirect } from 'react-router-dom';
 import ORDER_ACTIONS from '../../redux/actions/orderActions';
 import OrderSummary from '../OrderSummary/OrderSummary';
 
-
-
 class OrderReview extends Component {
 
   componentDidMount() {
