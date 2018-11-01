@@ -36,11 +36,6 @@ class OrderTable extends Component {
         }
       }})
   }
-  
-
-  getDetails = (id) => {
-    alert(`You have requested details for id: ${id}`);
-  }
 
   componentDidMount() {
     this.props.dispatch({ type: ORDER_ACTIONS.GET_ORDERS });

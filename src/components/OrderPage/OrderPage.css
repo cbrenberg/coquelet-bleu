@@ -33,7 +33,9 @@
 
 .orderFormFlexChild.content {
   width: 77%;
-  padding: 0 3% 0 3%
+  max-height: 65vh;
+  padding: 0 0 0 3%;
+  overflow: scroll;
 }
 
 #orderPage select {

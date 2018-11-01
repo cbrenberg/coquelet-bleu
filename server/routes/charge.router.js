@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const stripe = require('stripe')('sk_test_sImHK8he1G4p4QhnhtCgTfM7')
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 
 // handles stripe charges
