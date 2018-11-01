@@ -8,7 +8,7 @@ import './Footer.css'
 
 const Footer = () => (
   <footer>
-    &copy; Prime Digital Academy
+    <span>&copy; 2018 Coquelet Bleu Coffee</span> 
   </footer>
 );
 

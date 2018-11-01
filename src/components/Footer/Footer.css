@@ -1,4 +1,9 @@
 footer {
     background-color: gainsboro;
     height: 5vh;
+    text-align: right;
+    padding-right: 2vw;
+    line-height: 5vh;
 }
+
+

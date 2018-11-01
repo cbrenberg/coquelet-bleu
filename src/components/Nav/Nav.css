@@ -2,6 +2,9 @@
   width: 100vw;
   height: 5vh;
   background-color: gainsboro;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .nav-item {
@@ -19,4 +22,13 @@
 
 .nav-item:hover {
   background-color: darkgray;
+}
+
+#socialMediaLink {
+  line-height: 5vh;
+}
+
+#socialMediaLink img {
+  height: 3vh;
+  margin: 1vh;
 }
