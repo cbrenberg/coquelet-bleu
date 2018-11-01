@@ -67,7 +67,7 @@ const toDisplay = (state = { bean: {}, roast: {}, quantity: null}, action) => {
     case ORDER_ACTIONS.SET_COST:
       return { ...state, cost: action.payload }
     case ORDER_ACTIONS.RESET_ORDER:
-      return {};
+      return { bean: { }, roast: { }, quantity: null };
     default:
       return state;
   }

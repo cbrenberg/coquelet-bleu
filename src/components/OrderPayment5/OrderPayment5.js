@@ -9,10 +9,6 @@ import ORDER_ACTIONS from '../../redux/actions/orderActions';
 
 class OrderPayment extends Component {
 
-  componentDidMount() {
-    this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 5 });
-  }
-
   render() {
     return (this.props.newOrder.toDisplay.quantity ? (
       <div id="orderRoast">

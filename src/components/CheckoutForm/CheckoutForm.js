@@ -40,7 +40,8 @@ class CheckoutForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.submit();
-    this.toastId = toast.success('Your order is being processed...')
+    this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 5 });
+    this.toastId = toast.success('Your order is being processed...');
   }
 
   resetOrder = () => {

@@ -7,13 +7,10 @@ import OrderSummary from '../OrderSummary/OrderSummary';
 class OrderOrigin extends Component {
   state = {};
 
-  componentDidMount() {
-    this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 1 });
-  }
-
   handleSelect = (event) => {
     this.setState({ selection: event.target.value })
     this.props.dispatch({ type: ORDER_ACTIONS.CHOOSE_BEAN, payload: event.target.value });
+    this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 1 });
   }
 
   render() {

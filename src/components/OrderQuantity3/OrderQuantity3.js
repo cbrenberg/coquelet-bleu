@@ -26,15 +26,12 @@ class OrderQuantity extends Component {
     }
   }
 
-  componentDidMount() {
-    this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 3 });
-  }
-
   handleSelect = (event) => {
     this.setState({ selection: event.target.value })
     this.props.dispatch({ type: ORDER_ACTIONS.SET_QUANTITY, payload: Number(event.target.value) });
     this.props.dispatch({ type: ORDER_ACTIONS.DISPLAY_QUANTITY, payload: Number(event.target.value) });
-    this.props.dispatch({ type: ORDER_ACTIONS.SET_COST, payload: (event.target.value * 1.25) })
+    this.props.dispatch({ type: ORDER_ACTIONS.SET_COST, payload: (event.target.value * 1.25) });
+    this.props.dispatch({ type: ORDER_ACTIONS.UPDATE_PROGRESS, payload: 3 });
   }
 
   render() {

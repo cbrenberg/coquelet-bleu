@@ -7,7 +7,7 @@ const orderProgress = (state = { value: 0, success: false, readyForNext: false }
     case ORDER_ACTIONS.ORDER_SUCCEEDED:
       return { ...state, success: true };
     case ORDER_ACTIONS.RESET_ORDER:
-      return { value: 0, success: false, readyForNext: true };
+      return { value: 0, success: false };
     default:
       return state;
   }
