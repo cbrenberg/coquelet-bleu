@@ -63,13 +63,15 @@ class OrderTable extends Component {
               accessor: nameData => {
                 return nameData.first_name + ' ' + nameData.last_name
               },
+              width: 200,
             },
             {
               Header: "Quantity",
               accessor: "quantity",
               Cell: row => (
                 <span>{row.value} oz.</span>
-              )
+              ),
+              width: 60,
             },
             {
               Header: "Bean Type",
@@ -93,13 +95,13 @@ class OrderTable extends Component {
                   </span>
                   {' ' + row.value}
                 </span>
-              )
+              ),
             },
             {
-              Header: "Details",
+              
               Cell: row => (
                 // <img src={plusIcon} alt="view details" width='50%' />
-                <img src={moreIcon} alt="view details" width='20%' onClick={() => this.setState({ viewDetails: true, rowData: row })} />
+                <img src={moreIcon} alt="view details" width='50%' onClick={() => this.setState({ viewDetails: true, rowData: row })} />
               ),
               style: {
                 cursor: "pointer",
@@ -108,9 +110,17 @@ class OrderTable extends Component {
                 userSelect: "none",
                 margin: 'auto',
               },
+              sortable: false,
+              width: 50,
             }
           ]}
           defaultPageSize={10}
+          defaultSorted={[
+            {
+              id: "timestamp",
+              desc: true,
+            }
+          ]}
           className="-striped -highlight"
         >
 
@@ -122,8 +132,6 @@ class OrderTable extends Component {
           handleStatusChange={this.handleStatusChange}
           orderData={this.state.rowData.original} 
           statusCodes={this.props.admin.statusCodes} /> 
-
-        {/* <pre>{JSON.stringify(this.props.admin.orderList, null, 2)}</pre> */}
       </div>
     );
   }

@@ -1,12 +1,17 @@
 .orderTable {
   background-color: white;
   width: 100%;
+  max-width: 78vw;
+  overflow-x: scroll;
 }
 
 .orderTable .ReactTable {
-  height: 100%;
-  max-height: 64vh;
+  height: 64vh;
+  max-height: 65vh;
+  max-width: 78vw;
 }
+
+/* Order Details Modal styles below */
 
 .parent {
   display: flex;
