@@ -10,6 +10,10 @@ class Image extends Component {
     this.setState({ loaded: true});
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state === nextState ? false : true;
+  }
+
   render() {
 
     if (this.state.loaded) {
