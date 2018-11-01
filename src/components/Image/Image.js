@@ -18,10 +18,9 @@ class Image extends Component {
         )
       } else {
       return (
-      <img src={RoosterLogo}
+      <img id='selectedBean'
+        src={RoosterLogo}
         onLoad={() => this.imageLoaded()}
-        height='0'
-        width='0'
         alt="loading" />
         )
       }
