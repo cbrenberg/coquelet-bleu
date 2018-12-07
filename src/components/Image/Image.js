@@ -11,7 +11,7 @@ class Image extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.props === nextProps ? false : true;
+    return this.props === nextProps && this.state === nextState ? false : true;
   }
 
   render() {
