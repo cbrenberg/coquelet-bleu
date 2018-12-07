@@ -19,7 +19,7 @@ CREATE TABLE "orders" (
   "email" varchar(100) NOT NULL,
   "bean" int NOT NULL REFERENCES "beans"("id"),
   "roast" int NOT NULL REFERENCES "roast_levels"("id"),
-  "order_status" int NOT NULL REFERENCES "order_status"("id"),
+  "order_status" int NOT NULL REFERENCES "order_status"("id") DEFAULT 1,
   "quantity" int NOT NULL,
   "timestamp" timestamp NOT NULL DEFAULT NOW()
 );
