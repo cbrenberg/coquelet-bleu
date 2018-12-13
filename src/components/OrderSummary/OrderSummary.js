@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Image from '../Image/Image';
+import BeanDetail from '../BeanDetail/BeanDetail';
+import RoastDetail from '../RoastDetail/RoastDetail';
+import QuantityDetail from '../QuantityDetail/QuantityDetail';
 
 
 class OrderSummary extends Component {
@@ -8,63 +11,20 @@ class OrderSummary extends Component {
   render() {
     //takes just the selected bean property from redux store
     const currentOrder = this.props.toDisplay;
-    if (!this.props.toDisplay.bean.id && !this.props.toDisplay.roast.id && !this.props.toDisplay.quantity) {
-      return (
-        <h4>Make some choices, already!</h4>
-      )
-    } else if (this.props.toDisplay.bean.id && !this.props.toDisplay.roast.id && !this.props.toDisplay.quantity) {
-      return (
-        <div className="container">
-          <Image
-            src={currentOrder.bean.image_url}
-          />
-          <div className="textDiv">
-            <ul id="orderSummaryList">
-              <li><strong>Selected Bean: </strong>{currentOrder.bean.name}</li>
-              <li><strong>Description: </strong>{currentOrder.bean.origin_description}</li>
-              <li><strong>Flavor Notes: </strong>{currentOrder.bean.flavor_description}</li>
-              <li><strong>Suggested Roasts: </strong>{currentOrder.bean.roasts.join(', ')}</li>
-            </ul>
-          </div>
+    return (
+      <div className="container">
+        <Image
+          src={currentOrder.bean.image_url}
+        />
+        <div className="textDiv">
+          <ul id="orderSummaryList">
+            <BeanDetail bean={currentOrder.bean} />
+            <RoastDetail roast={currentOrder.roast} />
+            <QuantityDetail quantity={currentOrder.quantity} />
+          </ul>
         </div>
-      )
-    } else if (this.props.toDisplay.bean.id && this.props.toDisplay.roast.id && !this.props.toDisplay.quantity) {
-      return (
-        <div className="container">
-          <Image
-            src={currentOrder.bean.image_url}
-          />
-          <div className="textDiv">
-            <ul id="orderSummaryList">
-              <li><strong>Selected Bean: </strong>{currentOrder.bean.name}</li>
-              <li><strong>Description: </strong>{currentOrder.bean.origin_description}</li>
-              <li><strong>Flavor Notes: </strong>{currentOrder.bean.flavor_description}</li>
-              <li><strong>Selected Roast: </strong>{currentOrder.roast.roast}</li>
-              <li><strong>Roast Description: </strong>{currentOrder.roast.description}</li>
-            </ul>
-          </div>
-        </div>
-      )
-    } else if (this.props.toDisplay.quantity) {
-      return (
-        <div className="container">
-          <Image
-            src={currentOrder.bean.image_url}
-          />
-          <div className="textDiv">
-            <ul id="orderSummaryList">
-              <li><strong>Selected Bean: </strong>{currentOrder.bean.name}</li>
-              <li><strong>Description: </strong>{currentOrder.bean.origin_description}</li>
-              <li><strong>Flavor Notes: </strong>{currentOrder.bean.flavor_description}</li>
-              <li><strong>Selected Roast: </strong>{currentOrder.roast.roast}</li>
-              <li><strong>Roast Description: </strong>{currentOrder.roast.description}</li>
-              <li><strong>Quantity: </strong>{currentOrder.quantity} oz.</li>
-              <li><strong>Total Cost: </strong>${currentOrder.quantity * 1.25}.00</li>
-            </ul>
-          </div>
-        </div>
-      )
-    }
+      </div>
+    )
   }
 };
 
